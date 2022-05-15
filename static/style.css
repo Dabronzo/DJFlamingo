@@ -35,11 +35,11 @@ a {
     background-color: burlywood;
 }
 
-/* #jumbo-out {
-    background: url("jumbo_pic.jpg") no-repeat center center;
+#jumbo-out {
+    background: url("images/jumbo_pic.jpg") no-repeat center center;
     background-size: cover;
     transform: scaleX(-1);
-} */
+}
 
 #jumbo-in {
     background-color: transparent;

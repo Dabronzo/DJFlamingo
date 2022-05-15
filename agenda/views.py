@@ -13,6 +13,10 @@ class LandingGigsView(View):
             return render(
                 request, 'landing.html'
                 )
+        elif logged_in.is_superuser:
+            return render(
+                request, 'staff.html'
+            )
         else:
             return render(
                 request, 'index.html'
