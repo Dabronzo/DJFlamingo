@@ -21,7 +21,7 @@ class CustomAccountManager(BaseUserManager):
                 'Superuser must be assigned to is_superuser=True.'
             )
 
-        return self.create_user(email, user_name, password)
+        return self.create_user(email, user_name, password, **others)
 
     def create_user(self, email, user_name, password, **others):
         """Function base user creation that returns a user"""
