@@ -17,7 +17,7 @@ class Venue(models.Model):
     slug = models.SlugField(max_length=200, unique=True)
 
     def __str__(self):
-        return f"{self.name} located at {self.address}, {self.city}. Contact {self.contact}"
+        return f"{self.name}"
 
 
 class Gig(models.Model):
@@ -30,7 +30,7 @@ class Gig(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     time_start = models.TimeField()
-    time_duration = models.TimeField()
+    time_duration = models.CharField('Gig total time', max_length=50)
     dj = models.ForeignKey(
         NewDjUser, on_delete=models.CASCADE, related_name='gig_event'
         )
@@ -51,7 +51,7 @@ class Gig(models.Model):
         return days_till_gig
 
     class Meta:
-        ordering = ['-date']
+        ordering = ['date']
 
     def __str__(self):
         return f"Gig on {self.date} at {self.venue.name} assined to {self.dj.user_name}"
