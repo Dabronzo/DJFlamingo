@@ -53,7 +53,7 @@ class Gig(models.Model):
         until the gig"""
 
         today = date.today()
-        days_till_gig = (self.date - today)
+        days_till_gig = (self.date - today).days
         return days_till_gig
 
     class Meta:

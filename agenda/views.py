@@ -4,6 +4,7 @@ from django.shortcuts import get_object_or_404, redirect
 from django.views import View
 from .models import Gig
 from .forms import GigCreationForm, VenueCreationForm
+from django.core.paginator import Paginator
 
 
 class LandingGigsView(View):
@@ -26,8 +27,19 @@ class LandingGigsView(View):
                 }
             )
         else:
+            queryset = Gig.objects.filter(dj=logged_in).order_by('date')
+            gigs_exclude_reject = queryset.exclude(status=2).order_by('date')
+
+            # Pagination
+            p = Paginator(gigs_exclude_reject, 8)
+            page = request.GET.get('page')
+            my_gigs = p.get_page(page)
+
             return render(
-                request, 'index.html'
+                request, 'index.html',
+                {
+                    'my_gigs': my_gigs,
+                }
             )
 
 
