@@ -30,8 +30,13 @@ class LandingGigsView(View):
             queryset = Gig.objects.filter(dj=logged_in).order_by('date')
             gigs_exclude_reject = queryset.exclude(status=2).order_by('date')
 
+            lsit_gigs = []
+            for gig in gigs_exclude_reject:
+                if gig.days_to >= 0:
+                    lsit_gigs.append(gig)
+
             # Pagination
-            p = Paginator(gigs_exclude_reject, 8)
+            p = Paginator(lsit_gigs, 8)
             page = request.GET.get('page')
             my_gigs = p.get_page(page)
 
