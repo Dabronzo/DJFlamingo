@@ -4,6 +4,8 @@ from .models import Gig
 
 class GigFilter(FilterSet):
     """Filter class to the admin gigs table"""
-    model = Gig
-    fields = '__all__'
 
+    class Meta:
+
+        model = Gig
+        fields = ('date', 'venue', 'dj')

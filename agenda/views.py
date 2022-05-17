@@ -19,17 +19,19 @@ class LandingGigsView(View):
                 request, 'landing.html'
                 )
         elif logged_in.is_superuser:
-            queryset = Gig.objects.order_by('date')
-            my_filter = GigFilter(request.GET, queryset=queryset)
+            queryset = Gig.objects.all().order_by('date')
+
+            my_filter = GigFilter(self.request.GET, queryset=queryset)
             all_gigs = my_filter.qs
-           
+             
             return render(
                 request, 'staff.html',
                 {
                     'all_gigs': all_gigs,
-                    'myFilter': my_filter,
+                    'my_filter': my_filter,
                 }
             )
+
         else:
             queryset = Gig.objects.filter(dj=logged_in).order_by('date')
             gigs_exclude_reject = queryset.exclude(status=2).order_by('date')
