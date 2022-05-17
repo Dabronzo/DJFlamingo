@@ -5,6 +5,7 @@ from django.views import View
 from .models import Gig
 from .forms import GigCreationForm, VenueCreationForm
 from django.core.paginator import Paginator
+from .filters import GigFilter
 
 
 class LandingGigsView(View):
@@ -19,11 +20,14 @@ class LandingGigsView(View):
                 )
         elif logged_in.is_superuser:
             queryset = Gig.objects.order_by('date')
+            my_filter = GigFilter(request.GET, queryset=queryset)
+            all_gigs = my_filter.qs
            
             return render(
                 request, 'staff.html',
                 {
-                    'all_gigs': queryset,
+                    'all_gigs': all_gigs,
+                    'myFilter': my_filter,
                 }
             )
         else:
