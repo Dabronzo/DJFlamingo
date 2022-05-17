@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content%}
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card mt-5">
+                            {% if gig.status == 0 %}
+                                <div class="card-body text-white bg-warning mb-4">
+                                    <h5 class="card-title">Gig Proposal</h5>
+                            {% elif gig.status == 1 %}
+                            <div class="card-body text-white bg-success">
+                                <h5 class="card-title">Confirmed Gig</h5>
+                            {% else %}
+                                <div class="card-body text-white bg-danger mb-4">
+                                    <div class="card-header">Cancelled Gig</div>
+                            {% endif %}
+                                <p class="card-text">{{ gig.date }}</p>
+                                <small>{{ gig.days_to }} days till the event</small>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <strong>Start Time: </strong><span>{{ gig.time_start }}</span>
+                                </li>
+                                <li class="list-group-item">
+                                    <strong>Total Set Time: </strong><span>{{ gig.time_duration }}</span>
+                                </li>
+                                <li class="list-group-item">
+                                    <strong>Fees: </strong>$<span>{{ gig.fees }}</span>
+                                </li>
+                                {% if gig.notes %}
+                                    <li class="list-group-item">
+                                        <strong>Notes: </strong>
+                                        <p>
+                                            {{ gig.notes }}
+                                        </p>
+                                    </li>
+                                {% endif %}
+                                <li class="list-group-item">
+                                    <a href="#" class="btn text-white bg-success">Accept</a>
+                                    <a href="#" class="btn text-white bg-danger">Refuse</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card mt-5 bg-dark mb-5">
+                            <div class="card-header text-white">
+                                <strong>Venue: </strong><span>{{ venue.name }}</span>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <strong>Address:</strong>
+                                    <span>{{ venue.address }}</span>
+                                </li>
+                                <li class="list-group-item">
+                                    <strong>Contact info: </strong
+                    ><span>{{ venue.contact }}</span>
+                </li>
+                <li class="list-group-item">
+                    <strong>Additional Notes:</strong>
+                                    <p>
+                                        {{ venue.additional_info }}
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

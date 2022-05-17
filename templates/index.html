@@ -24,7 +24,7 @@
                                     <h5 class="card-title">{{ gig.date }}</h5>
                                     <p class="card-text">{{ gig.venue.name }}</p>
                                     <p class="cart-text">{{ gig.venue.city }}</p>
-                                    <a href="#" class="btn btn-primary">Details</a>
+                                    <a href="{% url 'gig_details' gig.slug %}" class="btn btn-primary">Details</a>
                                 </div>
                             </div>
                         </div>

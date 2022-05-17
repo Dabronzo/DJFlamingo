@@ -95,3 +95,19 @@ class CreateVenue(View):
             return redirect('home')
 
 
+class GigDetails(View):
+    """Class view to the details of a specific gig"""
+
+    def get(self, request, slug, *args, **kwargs):
+        """ Method to render the Gig Details"""
+        queryset = Gig.objects.all()
+        gig = get_object_or_404(queryset, slug=slug)
+        venue = gig.venue
+
+        return render(
+            request, 'gig_details.html',
+            {
+                'gig': gig,
+                'venue': venue,
+            }
+        )
