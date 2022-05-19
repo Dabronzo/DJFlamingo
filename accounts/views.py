@@ -3,6 +3,8 @@ from django.views import View
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from .forms import RegistrationForm
+from .models import NewDjUser
+
 
 
 class LoginView(View):
@@ -78,3 +80,18 @@ class RegistrateUser(View):
                     'form': form
                 }
             )
+
+
+class ViewAllDj(View):
+    """Class view to display a table with all the
+    registered dj"""
+
+    def get(self, request, *args, **kwargs):
+
+        queryset = NewDjUser.objects.all().order_by('join_date')
+        
+        return render(
+            request, 'all_users.html', {
+                'all_users': queryset,
+            }
+        )

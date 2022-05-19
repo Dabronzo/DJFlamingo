@@ -48,6 +48,10 @@ a {
     width: 100%;
 }
 
+#custom_check {
+    font-size: 10px;
+}
+
 .flamingo_image {
     border-radius: 50%;
     max-width: 60px;
