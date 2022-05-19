@@ -60,7 +60,7 @@
                                     {% else %}
                                         <td>Not Transferred</td>
                                     {% endif %}
-                                        <td><a href="# " class="p-2 text-white mx-1 bg-success ">Update</a><a href="# " class="p-2 text-white mx-1 bg-danger ">Delete</a></td>
+                                        <td><a href="{% url 'update_gig' gig.slug %}" class="p-2 text-white mx-1 bg-success ">Update</a><a href="#" class="p-2 text-white mx-1 bg-danger ">Delete</a></td>
                                 {% endfor %}
                             {% endif %}
                         </tbody>

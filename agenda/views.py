@@ -117,3 +117,33 @@ class GigDetails(View):
                 'venue': venue,
             }
         )
+
+
+class UpdateGig(View):
+    """Class to handle the update gigs"""
+
+    def get(self, request, slug, *args, **kwargs):
+        """Method to display the pre-populated form to update"""
+
+        gig = get_object_or_404(Gig, slug=slug)
+        form = GigCreationForm(instance=gig)
+
+        return render(
+            request,
+            'edit_gig.html',
+            {
+                'form': form,
+                'gig': gig,
+            }
+            )
+    
+    def post(self, request, slug, *args, **kwargs):
+        """Post the new values for the gig"""
+
+        gig = get_object_or_404(Gig, slug=slug)
+        form = GigCreationForm(request.POST, instance=gig)
+
+        if form.is_valid():
+            form.save()
+
+        return redirect('home')
