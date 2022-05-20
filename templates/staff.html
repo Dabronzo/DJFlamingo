@@ -61,7 +61,9 @@
                                     {% else %}
                                         <td>Not Transferred</td>
                                     {% endif %}
-                                        <td><a href="{% url 'update_gig' gig.slug %}" class="p-2 text-white mx-1 bg-success ">Update</a><a href="#" class="p-2 text-white mx-1 bg-danger ">Delete</a></td>
+                                        <td>
+                                            <a href="{% url 'update_gig' gig.slug %}" class="btn p-2 text-white mx-1 bg-success ">Update</a>
+                                        </td>
                                 {% endfor %}
                             {% endif %}
                         </tbody>
@@ -75,6 +77,14 @@
             $("form").addClass("py-3 px-2");
             $("label").addClass("mx-2");
             $("button").addClass("mx-2");
+
+            $('#exampleModal').on("show.bs.modal", function(e){
+                var gigName = $(e.relatedTarget).data('id');
+                $(e.currentTarget).find('#innerModal').html(gigName);
+                $("#modalForm").attr('action', "someAction");
+
+            })
         })
+       
     </script>
 {% endblock content %}

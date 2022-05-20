@@ -8,14 +8,13 @@
             <div class="col-12">
                 <div class="table-responsive-sm mt-3">
                     <h2 class="text-center">Registered DJ List</i></h2>
-                    <a href="#" class="btn text-white bg-info">Back to Gigs List</a>
+                    <a href="{% url 'home' %}" class="btn text-white bg-info">Back to Gigs List</a>
                     <table class="table mt-5 border text-center">
                         <thead class=" thead-dark ">
                             <tr>
                                 <th scope="col ">#</th>
                                 <th scope="col ">DJ Name</th>
                                 <th scope="col ">Email</th>
-                                <th scope="col ">Gigs</th>
                                 <th scope="col ">Staff</th>
 
                             </tr>
@@ -27,7 +26,6 @@
                                         <th scope="row ">{{ forloop.counter }}</th>
                                         <td>{{ user.user_name }}</td>
                                         <td>{{ user.email }}</td>
-                                        <td>Still</td>
                                         {% if user.is_staff %}
                                         <td>Yes</td>
                                         {% else %}

@@ -39,10 +39,18 @@
                                         </p>
                                     </li>
                                 {% endif %}
-                                <li class="list-group-item">
-                                    <a href="#" class="btn text-white bg-success">Accept</a>
-                                    <a href="#" class="btn text-white bg-danger">Refuse</a>
-                                </li>
+                                {% if gig.status == 0 %}
+                                    <li class="list-group-item">
+                                        <form class="d-inline" action="{% url 'accept' gig.slug %}" method="POST">
+                                            {% csrf_token %}
+                                            <button type="submit" name="agenda_gig_id" value="{{ gig.slug }}" class="btn text-white bg-success">Accept</button>
+                                        </form>
+                                        <form class="d-inline" action="{% url 'refuse' gig.slug %}" method="POST">
+                                            {% csrf_token %}
+                                            <button type="submit" name="agenda_gig_id" value="{{ gig.slug }}" class="btn text-white bg-danger">Refuse</button>
+                                        </form>
+                                    </li>
+                                {% endif %}
                             </ul>
                         </div>
                     </div>

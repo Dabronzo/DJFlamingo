@@ -77,6 +77,18 @@ class CreateGig(View):
             return redirect('home')
 
 
+class DeleteGig(View):
+    """Delete a gig from the database"""
+
+    def post(self, request, slug, *args, **kwargs):
+        """Post to delete"""
+
+        gig = get_object_or_404(Gig, slug=slug)
+        gig.delete()
+
+        return redirect('home')
+
+
 class CreateVenue(View):
     """View class for the venue creation"""
 
@@ -117,6 +129,41 @@ class GigDetails(View):
                 'venue': venue,
             }
         )
+
+
+class AceptGig(View):
+    """class to change the status of the gig to Acepted"""
+
+    def post(self, request, slug, *args, **kwargs):
+        """Post the changes on database"""
+
+        gig = get_object_or_404(Gig, slug=slug)
+        venue = gig.venue
+
+        gig.status = 1
+        gig.save()
+
+        return render(
+            request, 'gig_details.html',
+            {
+                'gig': gig,
+                'venue': venue,
+            }
+        )
+
+
+class RefuseGig(View):
+    """class to change status to Refused"""
+
+    def post(self, request, slug, *args, **kwargs):
+        """Post the changes on database"""
+
+        gig = get_object_or_404(Gig, slug=slug)
+
+        gig.status = 2
+        gig.save()
+
+        return redirect('home')
 
 
 class UpdateGig(View):
