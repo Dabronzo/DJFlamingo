@@ -73,3 +73,7 @@ a {
 .rejected_gig {
     background-color: grey;
 }
+
+.custom_background {
+    background-color: rgb(243, 154, 151);
+}

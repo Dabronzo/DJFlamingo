@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12 d-flex justify-content-center">
+            <div class="card mt-5 w-75">
+                <div class="card-body text-white bg-dark">
+                    <div class="row">
+                        <div class="col-6">
+                            <h5 class="card-title">{{ dj.user_name }}</h5>
+                        </div>
+
+                    </div>
+                </div>
+                <ul class="list-group list-group-flush text-center">
+                    <li class="list-group-item custom_background">
+                        <strong>Email: </strong><span> {{ dj.email }}</span>
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Registered since: </strong><span> {{ dj.join_date }}</span>
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Gigs Assigned: </strong><span> {{ gigs_assigned }}</span>
+                    </li>
+                    <li class="list-group-item">
+                        <button type="button" name="delete_user" class="btn text-white bg-danger mb-3">Delete</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

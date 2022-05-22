@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect
 from django.views import View
+from django.shortcuts import get_object_or_404
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from .forms import RegistrationForm
 from .models import NewDjUser
+from agenda.models import Gig
 
 
 
@@ -93,5 +95,28 @@ class ViewAllDj(View):
         return render(
             request, 'all_users.html', {
                 'all_users': queryset,
+            }
+        )
+
+
+class DetailsDJView(View):
+    """Render a page with details of a specific dj"""
+
+    def get(self, request, username, *args, **kwargs):
+        """Query the dj selected and render"""
+        queryset = NewDjUser.objects.all()
+        dj = get_object_or_404(queryset, user_name=username)
+
+        gigs = Gig.objects.all()
+        gigs_assigned = 0
+        for gig in gigs:
+            if gig.dj.user_name == dj.user_name:
+                gigs_assigned += 1
+
+        return render(
+            request, 'user_details.html',
+            {
+                'dj': dj,
+                'gigs_assigned': gigs_assigned,
             }
         )

@@ -16,6 +16,7 @@
                                 <th scope="col ">DJ Name</th>
                                 <th scope="col ">Email</th>
                                 <th scope="col ">Staff</th>
+                                <th scope="col ">Action</th>
 
                             </tr>
                         </thead>
@@ -31,6 +32,9 @@
                                         {% else %}
                                         <td>No</td>
                                         {% endif %}
+                                        <td>
+                                            <a href="{% url 'user_details' user.user_name %}" class="btn p-2 text-white mx-1 bg-success ">Update</a>
+                                        </td>
                                 {% endfor %}
                             {% endif %}
                         </tbody>
