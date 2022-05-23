@@ -4,27 +4,38 @@
 {% block content %}
 <div class="container">
     <div class="row">
+        <div class="col-12 d-flex justify-content-center mt-2">
+            <h2>Manage DJ Account</h2>
+        </div>
+    </div>
+    <h5>Menu</h5>
+    <div class="row">
+        <div class="col-12  d-flex justify-content-center mt-2 ">
+            <div class=" menu_admin p-1 w-75">
+                <a href="#" class="btn text-white bg-info">Back to Gigs List</a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-12 d-flex justify-content-center">
-            <div class="card mt-5 w-75">
+            <div class="card mt-5 w-75 border-0">
                 <div class="card-body text-white bg-dark">
-                    <div class="row">
-                        <div class="col-6">
-                            <h5 class="card-title">{{ dj.user_name }}</h5>
-                        </div>
-
-                    </div>
+                    <h3 class="card-title ">{{ dj.user_name }}</h3>
                 </div>
                 <ul class="list-group list-group-flush text-center">
                     <li class="list-group-item custom_background">
                         <strong>Email: </strong><span> {{ dj.email }}</span>
                     </li>
-                    <li class="list-group-item">
+                    <li class="list-group-item custom_background">
                         <strong>Registered since: </strong><span> {{ dj.join_date }}</span>
                     </li>
-                    <li class="list-group-item">
+                    <li class="list-group-item custom_background">
                         <strong>Gigs Assigned: </strong><span> {{ gigs_assigned }}</span>
                     </li>
-                    <li class="list-group-item">
+                    <li class="list-group-item custom_background">
+                        <strong>Admin Status: </strong><span> {{ dj.is_staff }}</span>
+                    </li>
+                    <li class="list-group-item custom_background">
                         <button type="button" name="delete_user" class="btn text-white bg-danger mb-3">Delete</button>
                     </li>
                 </ul>

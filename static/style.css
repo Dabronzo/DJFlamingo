@@ -75,5 +75,11 @@ a {
 }
 
 .custom_background {
-    background-color: rgb(243, 154, 151);
+    background-color: rgb(190, 186, 186);
+}
+
+.menu_admin {
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 0.2rem;
 }
