@@ -1,4 +1,4 @@
-from datetime import datetime
+
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404, redirect
 from django.views import View
@@ -8,22 +8,43 @@ from django.core.paginator import Paginator
 from .filters import GigFilter
 
 
+class MyGigsHistory(View):
+    """View the passed gigs info"""
+
+    def get(self, request, *args, **kwargs):
+        """Display template"""
+        logged_in = self.request.user
+        queryset = Gig.objects.filter(dj=logged_in).order_by('date')
+
+        past_gigs = []
+        for gig in queryset:
+            if gig.days_to < 0:
+                past_gigs.append(gig)
+
+        return render(
+            request, 'history.html',
+            {
+                'past_gigs': past_gigs,
+            }
+        )
+
+
 class LandingGigsView(View):
     """View class to handle the gigs list or the landing page"""
 
     def get(self, request, *args, **kwargs):
-        
         logged_in = self.request.user
         if logged_in.id is None:
             return render(
                 request, 'landing.html'
                 )
         elif logged_in.is_superuser:
+
             queryset = Gig.objects.all().order_by('date')
 
             my_filter = GigFilter(self.request.GET, queryset=queryset)
             all_gigs = my_filter.qs
-             
+
             return render(
                 request, 'staff.html',
                 {
@@ -102,7 +123,7 @@ class CreateVenue(View):
                 'form': form,
             }
         )
-    
+
     def post(self, request, *args, **kwargs):
         """Post to create a venue"""
 

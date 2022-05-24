@@ -1,5 +1,6 @@
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
+from django.contrib.auth.models import AbstractBaseUser
+from django.contrib.auth.models import PermissionsMixin, BaseUserManager
 from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
 
@@ -15,7 +16,7 @@ class CustomAccountManager(BaseUserManager):
 
         if others.get('is_staff') is not True:
             raise ValueError('Superuser must be assigned to is_staff=True.')
-        
+
         if others.get('is_superuser') is not True:
             raise ValueError(
                 'Superuser must be assigned to is_superuser=True.'
@@ -46,12 +47,11 @@ class NewDjUser(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False)
 
     objects = CustomAccountManager()
-    
+
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['user_name']
 
     def __str__(self):
         """string method"""
         return f"{self.user_name}"
-
 

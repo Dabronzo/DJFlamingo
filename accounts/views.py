@@ -3,10 +3,9 @@ from django.views import View
 from django.shortcuts import get_object_or_404
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
+from agenda.models import Gig
 from .forms import RegistrationForm
 from .models import NewDjUser
-from agenda.models import Gig
-
 
 
 class LoginView(View):
@@ -14,18 +13,18 @@ class LoginView(View):
 
     def get(self, request):
         """Render login page"""
-        
+
         return render(
             request, 'login.html'
         )
-    
+
     def post(self, request):
         """Post for Login"""
 
         email = request.POST['email']
         password = request.POST['password']
         user = authenticate(email=email, password=password)
-        
+
         if user is not None:
             login(request, user)
             # messages.success(request, (f"Welcome back {user.user_name}"))
@@ -33,7 +32,9 @@ class LoginView(View):
             return redirect('home')
 
         else:
-            messages.error(request,  ("An error ocurred with the login, please try again."))
+            messages.error(request,  (
+                "An error ocurred with the login, please try again."
+                ))
             print("Error")
             return render(request, 'login')
 
@@ -89,9 +90,10 @@ class ViewAllDj(View):
     registered dj"""
 
     def get(self, request, *args, **kwargs):
+        """Display all users"""
 
         queryset = NewDjUser.objects.all().order_by('join_date')
-        
+
         return render(
             request, 'all_users.html', {
                 'all_users': queryset,
@@ -120,3 +122,14 @@ class DetailsDJView(View):
                 'gigs_assigned': gigs_assigned,
             }
         )
+
+
+class DeleteUser(View):
+    """Delete a selected user"""
+
+    def post(self, request, username, *args, **kwargs):
+        """Delete from the database"""
+        dj = get_object_or_404(NewDjUser, user_name=username)
+        dj.delete()
+
+        return redirect('home')

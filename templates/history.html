@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="table-responsive-sm mt-3">
+                    <table class="table mt-5 border text-center">
+                        <thead class=" thead-dark ">
+                            <tr>
+                                <th scope="col ">#</th>
+                                <th scope="col ">Date</th>
+                                <th scope="col ">Venue</th>
+                                <th scope="col ">Cash</th>
+                                <th scope="col ">Status</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% if past_gigs %}
+                                {% for gig in past_gigs %}
+                                    <tr class="rejected_gig">
+                                        <th scope="row ">{{ forloop.counter }}</th>
+                                        <td>{{ gig.date }}</td>
+                                        <td>{{ gig.venue.name }}</td>
+                                        <td>{{ gig.calculated_fees }}</td>
+                                        {% if gig.status == 3 %}
+                                            <td>Cancelled</td>
+                                        {% else %}
+                                            <td>Completed</td>
+                                        {% endif %}
+                                    </tr>
+                                {% endfor %}
+                            {% endif %}
+                            <tr class="confirmed_gig">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

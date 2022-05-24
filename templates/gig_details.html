@@ -4,19 +4,32 @@
 {% block content%}
     <div class="container">
         <div class="row">
+            <div class="col-12 d-flex justify-content-center mt-2">
+                <h2>Gig Detail</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12  d-flex justify-content-center mt-2 ">
+                <a href="{% url 'home' %}" class="btn text-white bg-info">Back to Gigs List</a>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-12">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="card mt-5">
                             {% if gig.status == 0 %}
                                 <div class="card-body text-white bg-warning mb-4">
+                                    <h4 class="card-title">{{ gig.name }}</h4>
                                     <h5 class="card-title">Gig Proposal</h5>
                             {% elif gig.status == 1 %}
-                            <div class="card-body text-white bg-success">
-                                <h5 class="card-title">Confirmed Gig</h5>
+                                <div class="card-body text-white bg-success">
+                                    <h4 class="card-title">{{ gig.name }}</h4>
+                                    <h5 class="card-title">Confirmed Gig</h5>
                             {% else %}
                                 <div class="card-body text-white bg-danger mb-4">
-                                    <div class="card-header">Cancelled Gig</div>
+                                    <h4 class="card-title">{{ gig.name }}</h4>
+                                    <h5 class="card-title">Canceled Gig</h5>
                             {% endif %}
                                 <p class="card-text">{{ gig.date }}</p>
                                 <small>{{ gig.days_to }} days till the event</small>
@@ -29,7 +42,7 @@
                                     <strong>Total Set Time: </strong><span>{{ gig.time_duration }}</span>
                                 </li>
                                 <li class="list-group-item">
-                                    <strong>Fees: </strong>$<span>{{ gig.fees }}</span>
+                                    <strong>Fees: </strong>$<span>{{ gig.calculated_fees}}</span>
                                 </li>
                                 {% if gig.notes %}
                                     <li class="list-group-item">

@@ -4,30 +4,37 @@
 {% block content%}
     <div class="container-fluid">
         <div class="row">
+            <div class="col-12  d-flex justify-content-center mt-2 ">
+                <a href="{% url 'history' %}" class="btn text-white bg-info">History</a>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-12 mt-3 left">
                 {% if my_gigs %}
                     <div class="row">
                         {% for gig in my_gigs %}
-                        <!--Here comes the cards-->
-                        <div class="col-md-3">
-                            {%  if gig.status == 0 %}
-                                <div class="card text-white bg-warning mb-4">
-                                    <div class="card-header">Proposal Gig</div>
-                            {% elif gig.status == 1 %}
-                                <div class="card text-white bg-success mb-4">
-                                    <div class="card-header">Confirmed Gig</div>
-                            {% else %}
-                                <div class="card text-white bg-danger mb-4">
-                                    <div class="card-header">Cancelled Gig</div>
-                            {% endif %}
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ gig.date }}</h5>
-                                    <p class="card-text">{{ gig.venue.name }}</p>
-                                    <p class="cart-text">{{ gig.venue.city }}</p>
-                                    <a href="{% url 'gig_details' gig.slug %}" class="btn btn-primary">Details</a>
+                            {% if gig.days_to >= 0 %}
+                                <!--Here comes the cards-->
+                                <div class="col-md-3">
+                                {%  if gig.status == 0 %}
+                                    <div class="card text-white bg-warning mb-4">
+                                        <div class="card-header">Proposal Gig</div>
+                                {% elif gig.status == 1 %}
+                                    <div class="card text-white bg-success mb-4">
+                                        <div class="card-header">Confirmed Gig</div>
+                                {% else %}
+                                    <div class="card text-white bg-danger mb-4">
+                                        <div class="card-header">Cancelled Gig</div>
+                                {% endif %}
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ gig.date }}</h5>
+                                        <p class="card-text">{{ gig.venue.name }}</p>
+                                        <p class="cart-text">{{ gig.venue.city }}</p>
+                                        <a href="{% url 'gig_details' gig.slug %}" class="btn btn-primary">Details</a>
+                                    </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
+                            {% endif %}
                         {% endfor %}
                     </div>
                 {% else %}

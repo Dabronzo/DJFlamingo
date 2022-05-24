@@ -4,13 +4,21 @@
 {% block content %}
     <div class="container">
         <div class="row">
+            <div class="col-12 d-flex justify-content-center mt-2">
+                <h2>All Gigs List</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12  d-flex justify-content-center mt-2 ">
+                <a href="{% url 'create_gig' %}" class="btn menu_admin text-white bg-info">Create Gig</a>
+                <a href="{% url 'create_venue' %}" class="btn menu_admin text-white bg-info">Create New Venue</a>
+                <a href="{% url 'all_users' %}" class="btn menu_admin text-white bg-info">View Registered DJ's</a>
+                <a href="#" class="btn menu_admin text-white bg-info">View Passed Gigs</a>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-12">
                 <div class="table-responsive-sm mt-3">
-                    <h2 class="text-center">Welcome</h2>
-                    <a href="{% url 'create_gig' %}" class="btn text-white bg-info">Create Gig</a>
-                    <a href="{% url 'create_venue' %}" class="btn text-white bg-info">Create New Venue</a>
-                    <a href="{% url 'all_users' %}" class="btn text-white bg-info">View Registered DJ's</a>
-                    <a href="#" class="btn text-white bg-info">View Passed Gigs</a>
                     <div class="card card-bory mt-3">
                         <form method="GET">
                             {{ my_filter.form }}
@@ -34,36 +42,38 @@
                         <tbody>
                             {% if all_gigs %}
                                 {% for gig in all_gigs %}
-                                    {% if gig.status == 1 %}
-                                        <tr class="confirmed_gig">
-                                    {% elif gig.status == 0 %}
-                                        <tr class="proposal_gig">
-                                    {% elif gig.status == 2 %}
-                                        <tr class="refused_gig">
-                                    {% else %}
-                                        <tr class="rejected_gig">
+                                    {% if gig.days_to >= 0 %}
+                                        {% if gig.status == 1 %}
+                                            <tr class="confirmed_gig">
+                                        {% elif gig.status == 0 %}
+                                            <tr class="proposal_gig">
+                                        {% elif gig.status == 2 %}
+                                            <tr class="refused_gig">
+                                        {% else %}
+                                            <tr class="rejected_gig">
+                                        {% endif %}
+                                            <th scope="row ">{{ forloop.counter }}</th>
+                                            <td>{{ gig.date }}</td>
+                                            <td>{{ gig.venue.name }}, {{ gig.venue.city }}</td>
+                                            <td>{{ gig.dj }}</td>
+                                        {% if gig.status == 1 %}
+                                            <td>Approved</td>
+                                        {% elif gig.status == 0 %}
+                                            <td>Proposal</td>
+                                        {% elif gig.status == 2 %}
+                                            <td>Refused</td>
+                                        {% else %}
+                                            <td>Cancelled</td>
+                                        {% endif %}
+                                        {% if gig.is_payed %}
+                                            <td>Payment Transferred</td>
+                                        {% else %}
+                                            <td>Not Transferred</td>
+                                        {% endif %}
+                                            <td>
+                                                <a href="{% url 'update_gig' gig.slug %}" class="btn p-2 text-white mx-1 bg-success ">Update</a>
+                                            </td>
                                     {% endif %}
-                                    <th scope="row ">{{ forloop.counter }}</th>
-                                    <td>{{ gig.date }}</td>
-                                    <td>{{ gig.venue.name }}, {{ gig.venue.city }}</td>
-                                    <td>{{ gig.dj }}</td>
-                                    {% if gig.status == 1 %}
-                                        <td>Approved</td>
-                                    {% elif gig.status == 0 %}
-                                        <td>Proposal</td>
-                                    {% elif gig.status == 2 %}
-                                        <td>Refused</td>
-                                    {% else %}
-                                        <td>Cancelled</td>
-                                    {% endif %}
-                                    {% if gig.is_payed %}
-                                        <td>Payment Transferred</td>
-                                    {% else %}
-                                        <td>Not Transferred</td>
-                                    {% endif %}
-                                        <td>
-                                            <a href="{% url 'update_gig' gig.slug %}" class="btn p-2 text-white mx-1 bg-success ">Update</a>
-                                        </td>
                                 {% endfor %}
                             {% endif %}
                         </tbody>

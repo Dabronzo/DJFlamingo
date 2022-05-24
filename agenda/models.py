@@ -44,6 +44,7 @@ class Gig(models.Model):
         Venue, on_delete=models.CASCADE, related_name='gig_venue'
     )
     fees = models.DecimalField('Total fees', max_digits=10, decimal_places=2)
+    agency_tax = models.IntegerField('Agency Tax in %', default=5, blank=True)
     is_payed = models.BooleanField(default=False)
     notes = models.TextField(blank=True)
 
@@ -55,6 +56,15 @@ class Gig(models.Model):
         today = date.today()
         days_till_gig = (self.date - today).days
         return days_till_gig
+
+    @property
+    def calculated_fees(self):
+        """Method to return the cash made by dj with
+        the agency tax calculated"""
+
+        agency_fees = self.fees * (self.agency_tax)/100
+        final_cash = self.fees - agency_fees
+        return final_cash
 
     class Meta:
         ordering = ['date']

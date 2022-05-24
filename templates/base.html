@@ -17,7 +17,7 @@
 
 <body class="d-flex flex-column h-100">
     <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-        <a class="navbar-brand" id="logo_text" href="#">Flamingo</a>
+        <a class="navbar-brand" id="logo_text" href="{% url 'home' %}">Flamingo</a>
         <span id="logo-border"><img id="logo" src="{% static 'images/flamingo_logo.png' %}" alt="flamingo logo"
       /></span>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,11 +27,11 @@
             <ul class="navbar-nav">
                 {% if user.is_authenticated %}
                     <li class="nav-item ">
-                        <p class="text-light nav-link text">Welcome User</p>
+                        <p class="text-light nav-link text">Welcome {{ user }}</p>
                     </li>
                 {% endif %}
                 <li class="nav-item active">
-                    <a class="nav-link text-light" href="#">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link text-light" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
                 </li>
                 {% if user.is_authenticated %}
                     <li class="nav-item">
@@ -42,7 +42,7 @@
                         <a class="nav-link text-light" href="{% url 'login' %}">Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="#">Register</a>
+                        <a class="nav-link text-light" href="{% url 'register' %}">Register</a>
                     </li>
                 {% endif %}
             </ul>
