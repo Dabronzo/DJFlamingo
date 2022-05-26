@@ -5,12 +5,12 @@
     <div class="container">
         <div class="row">
             <div class="col-12 d-flex justify-content-center mt-2">
-                <h2 class="text-center">Registered DJ List</i></h2>
+                <h2>Gigs History</h2>
             </div>
         </div>
         <div class="row">
             <div class="col-12 d-flex justify-content-center mt-2">
-                <a href="{% url 'home' %}" class="btn text-white bg-info">Back to Gigs List</a>
+                <a href="{% url 'home' %}" class="btn text-white bg-info mb-3">Back to Gigs List</a>
             </div>
         </div>
         <div class="row">
@@ -20,30 +20,32 @@
                         <thead class=" thead-dark ">
                             <tr>
                                 <th scope="col ">#</th>
-                                <th scope="col ">DJ Name</th>
-                                <th scope="col ">Email</th>
-                                <th scope="col ">Staff</th>
-                                <th scope="col ">Action</th>
+                                <th scope="col ">Date</th>
+                                <th scope="col ">Name</th>
+                                <th scope="col ">Venue</th>
+                                <th scope="col ">Cash</th>
+                                <th scope="col ">Status</th>
 
                             </tr>
                         </thead>
                         <tbody>
-                            {% if all_users %}
-                                {% for user in all_users %}
+                            {% if gigs_history %}
+                                {% for gig in gigs_history %}
                                     <tr class="rejected_gig text-white">
                                         <th scope="row ">{{ forloop.counter }}</th>
-                                        <td>{{ user.user_name }}</td>
-                                        <td>{{ user.email }}</td>
-                                        {% if user.is_staff %}
-                                        <td>Yes</td>
+                                        <td>{{ gig.date }}</td>
+                                        <td>{{ gig.dj }}</td>
+                                        <td>{{ gig.venue.name }}</td>
+                                        <td>{{ gig.calc_agency_cash }}</td>
+                                        {% if gig.status == 3 %}
+                                            <td>Cancelled</td>
                                         {% else %}
-                                        <td>No</td>
+                                            <td>Completed</td>
                                         {% endif %}
-                                        <td>
-                                            <a href="{% url 'user_details' user.user_name %}" class="btn login-custom p-2 mx-1">Update</a>
-                                        </td>
+                                    </tr>
                                 {% endfor %}
                             {% endif %}
+                            <tr class="confirmed_gig">
                         </tbody>
                     </table>
                 </div>

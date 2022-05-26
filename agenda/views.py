@@ -8,6 +8,27 @@ from django.core.paginator import Paginator
 from .filters import GigFilter
 
 
+class AllGigsHistory(View):
+    """Display table with a view of completed gigs"""
+
+    def get(self, request, *args, **kwargs):
+        """Query the gigs and display the template"""
+        queryset = Gig.objects.all().order_by('date')
+
+        gigs_history = []
+        for gig in queryset:
+            if gig.days_to < 0:
+                gigs_history.append(gig)
+
+        return render(
+            request, 
+            'gigs_history.html',
+            {
+                'gigs_history': gigs_history,
+            }
+            )
+
+
 class MyGigsHistory(View):
     """View the passed gigs info"""
 

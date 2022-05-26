@@ -66,6 +66,14 @@ class Gig(models.Model):
         final_cash = self.fees - agency_fees
         return final_cash
 
+    @property
+    def calc_agency_cash(self):
+        """Method to calculate the amount of money
+        that the agency earns of each gig"""
+
+        agency_fees = self.fees * (self.agency_tax)/100
+        return agency_fees
+
     class Meta:
         ordering = ['date']
 

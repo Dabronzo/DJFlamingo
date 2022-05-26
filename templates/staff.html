@@ -13,7 +13,7 @@
                 <a href="{% url 'create_gig' %}" class="btn menu_admin text-white bg-info">Create Gig</a>
                 <a href="{% url 'create_venue' %}" class="btn menu_admin text-white bg-info">Create New Venue</a>
                 <a href="{% url 'all_users' %}" class="btn menu_admin text-white bg-info">View Registered DJ's</a>
-                <a href="#" class="btn menu_admin text-white bg-info">View Passed Gigs</a>
+                <a href="{% url 'gigs_history' %}" class="btn menu_admin text-white bg-info">View Passed Gigs</a>
             </div>
         </div>
         <div class="row">
@@ -71,7 +71,8 @@
                                             <td>Not Transferred</td>
                                         {% endif %}
                                             <td>
-                                                <a href="{% url 'update_gig' gig.slug %}" class="btn p-2 text-white mx-1 bg-success ">Update</a>
+                                                <a href="{% url 'update_gig' gig.slug %}" class="btn login-custom p-2 mx-1">Update</a>
+                                                <a href="{% url 'gig_details' gig.slug %}" class="btn login-custom p-2 mx-1 ">View Detail</a>
                                             </td>
                                     {% endif %}
                                 {% endfor %}

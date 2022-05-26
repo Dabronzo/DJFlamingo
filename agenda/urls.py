@@ -13,4 +13,5 @@ urlpatterns = [
     path('refuse/<slug:slug>', views.RefuseGig.as_view(), name='refuse'),
     path('delete_gig/<slug:slug>', views.DeleteGig.as_view(), name='delete'),
     path('history', views.MyGigsHistory.as_view(), name='history'),
+    path('gigs_history', views.AllGigsHistory.as_view(), name='gigs_history'),
 ]
