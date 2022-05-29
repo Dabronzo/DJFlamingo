@@ -65,7 +65,12 @@
                                             </form>
                                         </li>
                                     {% endif %}
+                                {% else %}
+                                    <li class="list-group-item">
+                                        <a href="{% url 'update_gig' gig.slug %}" class="btn btn-primary p-2 mx-1">Update</a>
+                                    </li>
                                 {% endif %}
+
                             </ul>
                         </div>
                     </div>

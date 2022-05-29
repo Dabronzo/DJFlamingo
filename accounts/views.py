@@ -92,13 +92,17 @@ class ViewAllDj(View):
     def get(self, request, *args, **kwargs):
         """Display all users"""
 
-        queryset = NewDjUser.objects.all().order_by('join_date')
-
-        return render(
-            request, 'all_users.html', {
-                'all_users': queryset,
-            }
-        )
+        logged_in = self.request.user
+        if logged_in.is_superuser:
+            queryset = NewDjUser.objects.all().order_by('join_date')
+            return render(
+                request, 'all_users.html',
+                {
+                    'all_users': queryset,
+                }
+            )
+        else:
+            return redirect('home')
 
 
 class DetailsDJView(View):
@@ -106,22 +110,26 @@ class DetailsDJView(View):
 
     def get(self, request, username, *args, **kwargs):
         """Query the dj selected and render"""
-        queryset = NewDjUser.objects.all()
-        dj = get_object_or_404(queryset, user_name=username)
+        logged_in = self.request.user
+        if logged_in.is_superuser:
+            queryset = NewDjUser.objects.all()
+            dj = get_object_or_404(queryset, user_name=username)
+            gigs = Gig.objects.all()
+            gigs_assigned = 0
+            for gig in gigs:
+                if gig.dj.user_name == dj.user_name:
+                    gigs_assigned += 1
 
-        gigs = Gig.objects.all()
-        gigs_assigned = 0
-        for gig in gigs:
-            if gig.dj.user_name == dj.user_name:
-                gigs_assigned += 1
+            return render(
+                request, 'user_details.html',
+                {
+                    'dj': dj,
+                    'gigs_assigned': gigs_assigned,
+                }
+            )
 
-        return render(
-            request, 'user_details.html',
-            {
-                'dj': dj,
-                'gigs_assigned': gigs_assigned,
-            }
-        )
+        else:
+            return redirect('home')
 
 
 class DeleteUser(View):
@@ -129,7 +137,8 @@ class DeleteUser(View):
 
     def post(self, request, username, *args, **kwargs):
         """Delete from the database"""
-        dj = get_object_or_404(NewDjUser, user_name=username)
-        dj.delete()
+        if self.request.user.is_superuser:
+            dj = get_object_or_404(NewDjUser, user_name=username)
+            dj.delete()
 
-        return redirect('home')
+            return redirect('home')

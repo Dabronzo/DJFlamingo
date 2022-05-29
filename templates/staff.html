@@ -10,30 +10,35 @@
         </div>
         <div class="row">
             <div class="col-12  d-flex justify-content-center mt-2 ">
-                <a href="{% url 'create_gig' %}" class="btn menu_admin text-white bg-info">Create Gig</a>
-                <a href="{% url 'create_venue' %}" class="btn menu_admin text-white bg-info">Create New Venue</a>
-                <a href="{% url 'all_users' %}" class="btn menu_admin text-white bg-info">View Registered DJ's</a>
-                <a href="{% url 'gigs_history' %}" class="btn menu_admin text-white bg-info">View Passed Gigs</a>
+                <a href="{% url 'create_gig' %}" class="btn_custom menu_admin text-white bg-info">Create Gig</a>
+                <a href="{% url 'create_venue' %}" class="btn_custom menu_admin text-white bg-info">Create New Venue</a>
+                <a href="{% url 'all_users' %}" class="btn_custom menu_admin text-white bg-info">View Registered DJ's</a>
+                <a href="{% url 'gigs_history' %}" class="btn_custom menu_admin text-white bg-info">View Passed Gigs</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="card card-bory mt-3">
+                    <form method="GET">
+                        {{ my_filter.form }}
+
+                        <button class="btn btn-primary" type="submit">Search</button>
+                    </fom>
+                </div>
             </div>
         </div>
         <div class="row">
             <div class="col-12">
                 <div class="table-responsive-sm mt-3">
-                    <div class="card card-bory mt-3">
-                        <form method="GET">
-                            {{ my_filter.form }}
-
-                            <button class="btn btn-primary" type="submit">Search</button>
-                        </fom>
-                    </div>
                     <table class="table mt-5 border text-center">
                         <thead class=" thead-dark ">
                             <tr>
                                 <th scope="col ">#</th>
                                 <th scope="col ">Date</th>
-                                <th scope="col ">Venue</th>
+                                <th scope="col ">Location</th>
                                 <th scope="col ">DJ</th>
                                 <th scope="col ">Status</th>
+                                <th scope="col ">Gig Price</th>
                                 <th scope="col ">Payment</th>
                                 <th scope="col ">Action</th>
 
@@ -65,14 +70,14 @@
                                         {% else %}
                                             <td>Cancelled</td>
                                         {% endif %}
+                                            <td>{{ gig.fees }}</th>
                                         {% if gig.is_payed %}
                                             <td>Payment Transferred</td>
                                         {% else %}
                                             <td>Not Transferred</td>
                                         {% endif %}
                                             <td>
-                                                <a href="{% url 'update_gig' gig.slug %}" class="btn login-custom p-2 mx-1">Update</a>
-                                                <a href="{% url 'gig_details' gig.slug %}" class="btn login-custom p-2 mx-1 ">View Detail</a>
+                                                <a href="{% url 'gig_details' gig.slug %}" class="btn btn-primary p-2 mx-1 ">View Detail</a>
                                             </td>
                                     {% endif %}
                                 {% endfor %}

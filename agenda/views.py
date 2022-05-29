@@ -1,36 +1,37 @@
-
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404, redirect
 from django.views import View
+from django.core.paginator import Paginator
 from .models import Gig
 from .forms import GigCreationForm, VenueCreationForm
-from django.core.paginator import Paginator
 from .filters import GigFilter
 
 
 class AllGigsHistory(View):
-    """Display table with a view of completed gigs"""
+    """Admin view to display table with a view of completed gigs"""
 
     def get(self, request, *args, **kwargs):
         """Query the gigs and display the template"""
-        queryset = Gig.objects.all().order_by('date')
+        if self.request.user.is_superuser:
+            queryset = Gig.objects.all().order_by('date')
+            gigs_history = []
+            for gig in queryset:
+                if gig.days_to < 0:
+                    gigs_history.append(gig)
 
-        gigs_history = []
-        for gig in queryset:
-            if gig.days_to < 0:
-                gigs_history.append(gig)
-
-        return render(
-            request, 
-            'gigs_history.html',
-            {
-                'gigs_history': gigs_history,
-            }
+            return render(
+                request,
+                'gigs_history.html',
+                {
+                    'gigs_history': gigs_history,
+                }
             )
+        else:
+            return redirect('home')
 
 
 class MyGigsHistory(View):
-    """View the passed gigs info"""
+    """User class view the passed gigs info"""
 
     def get(self, request, *args, **kwargs):
         """Display template"""
@@ -97,18 +98,21 @@ class LandingGigsView(View):
 
 
 class CreateGig(View):
-    """View Class to show the fomr to create a new gig"""
+    """Admin view Class to show the fomr to create a new gig"""
 
     def get(self, request, *args, **kwargs):
 
-        form = GigCreationForm()
-        return render(
-            request, 'create_gig.html',
-            {
-                'form': form,
-            }
-        )
-    
+        if self.request.user.is_superuser:
+            form = GigCreationForm()
+            return render(
+                request, 'create_gig.html',
+                {
+                    'form': form,
+                }
+            )
+        else:
+            return redirect('home')
+
     def post(self, request, *args, **kwargs):
         """Post Method to create gig"""
 
@@ -120,30 +124,35 @@ class CreateGig(View):
 
 
 class DeleteGig(View):
-    """Delete a gig from the database"""
+    """Admin view class to delete a gig from the database"""
 
     def post(self, request, slug, *args, **kwargs):
         """Post to delete"""
 
-        gig = get_object_or_404(Gig, slug=slug)
-        gig.delete()
+        if self.request.user.is_superuser:
+            gig = get_object_or_404(Gig, slug=slug)
+            gig.delete()
 
-        return redirect('home')
+            return redirect('home')
 
 
 class CreateVenue(View):
-    """View class for the venue creation"""
+    """Admin view class for the venue creation"""
 
     def get(self, request, *args, **kwargs):
         """Get to show the form and template"""
 
-        form = VenueCreationForm()
-        return render(
-            request, 'create_venue.html',
-            {
-                'form': form,
-            }
-        )
+        if self.request.user.is_superuser:
+            form = VenueCreationForm()
+
+            return render(
+                request, 'create_venue.html',
+                {
+                    'form': form,
+                }
+            )
+        else:
+            return redirect('home')
 
     def post(self, request, *args, **kwargs):
         """Post to create a venue"""
@@ -156,7 +165,7 @@ class CreateVenue(View):
 
 
 class GigDetails(View):
-    """Class view to the details of a specific gig"""
+    """User and Admin class view to the details of a specific gig"""
 
     def get(self, request, slug, *args, **kwargs):
         """ Method to render the Gig Details"""
@@ -174,7 +183,7 @@ class GigDetails(View):
 
 
 class AceptGig(View):
-    """class to change the status of the gig to Acepted"""
+    """User class to change the status of the gig to acepted"""
 
     def post(self, request, slug, *args, **kwargs):
         """Post the changes on database"""
@@ -209,23 +218,25 @@ class RefuseGig(View):
 
 
 class UpdateGig(View):
-    """Class to handle the update gigs"""
+    """Admin class to handle the update gigs"""
 
     def get(self, request, slug, *args, **kwargs):
         """Method to display the pre-populated form to update"""
 
-        gig = get_object_or_404(Gig, slug=slug)
-        form = GigCreationForm(instance=gig)
-
-        return render(
-            request,
-            'edit_gig.html',
-            {
-                'form': form,
-                'gig': gig,
-            }
+        if self.request.user.is_superuser:
+            gig = get_object_or_404(Gig, slug=slug)
+            form = GigCreationForm(instance=gig)
+            return render(
+                request,
+                'edit_gig.html',
+                {
+                    'form': form,
+                    'gig': gig,
+                }
             )
-    
+        else:
+            return redirect('home')
+
     def post(self, request, slug, *args, **kwargs):
         """Post the new values for the gig"""
 
