@@ -15,21 +15,21 @@
         </div>
         <div class="row">
             <div class="col-12">
-                <div class="table-responsive-sm mt-3">
-                    <table class="table mt-5 border text-center">
-                        <thead class=" thead-dark ">
-                            <tr>
-                                <th scope="col ">#</th>
-                                <th scope="col ">Date</th>
-                                <th scope="col ">Name</th>
-                                <th scope="col ">Venue</th>
-                                <th scope="col ">Cash</th>
-                                <th scope="col ">Status</th>
+                {% if gigs_history %}
+                    <div class="table-responsive-sm mt-3">
+                        <table class="table mt-5 border text-center">
+                            <thead class=" thead-dark ">
+                                <tr>
+                                    <th scope="col ">#</th>
+                                    <th scope="col ">Date</th>
+                                    <th scope="col ">Name</th>
+                                    <th scope="col ">Venue</th>
+                                    <th scope="col ">Cash</th>
+                                    <th scope="col ">Status</th>
 
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% if gigs_history %}
+                                </tr>
+                            </thead>
+                            <tbody>
                                 {% for gig in gigs_history %}
                                     <tr class="rejected_gig text-white">
                                         <th scope="row ">{{ forloop.counter }}</th>
@@ -42,13 +42,25 @@
                                         {% else %}
                                             <td>Completed</td>
                                         {% endif %}
-                                    </tr>
+                                        </tr>
                                 {% endfor %}
-                            {% endif %}
-                            <tr class="confirmed_gig">
-                        </tbody>
-                    </table>
-                </div>
+                                <tr class="confirmed_gig">
+                            </tbody>
+                        </table>
+                    </div>
+                {% else %}
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12 mt-5">
+                                <div class="jumbotron bg-dark text-center text-white">
+                                    <img src="{% static 'images/flamingo_sunglass_square.jpg' %}" alt="flamingo with sunglasses" class="flamingo_image" />
+                                    <h1 class="display-4 logo-jumbo">Information</h1>
+                                    <p class="lead">There are no history of gigs yet.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
             </div>
         </div>
     </div>

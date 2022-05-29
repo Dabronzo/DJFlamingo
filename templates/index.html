@@ -38,7 +38,19 @@
                         {% endfor %}
                     </div>
                 {% else %}
-                <p>Nothing to show</p>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12 mt-5">
+                                <div class="jumbotron bg-dark text-center text-white">
+                                    <img src="{% static 'images/flamingo_sunglass_square.jpg' %}" alt="flamingo with sunglasses" class="flamingo_image" />
+                                    <h1 class="display-4 logo-jumbo">Hey DJ!</h1>
+                                    <p class="lead">You don't have any gig at this moment.</p>
+                                    <hr class="my-4" />
+                                    <p>for more info contact the admin at charlyalaneperon@gmail.com</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 {% endif %}
             </div>
         </div>

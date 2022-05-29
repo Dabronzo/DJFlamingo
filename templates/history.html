@@ -4,21 +4,31 @@
 {% block content %}
     <div class="container">
         <div class="row">
-            <div class="col-12">
-                <div class="table-responsive-sm mt-3">
-                    <table class="table mt-5 border text-center">
-                        <thead class=" thead-dark ">
-                            <tr>
-                                <th scope="col ">#</th>
-                                <th scope="col ">Date</th>
-                                <th scope="col ">Venue</th>
-                                <th scope="col ">Cash</th>
-                                <th scope="col ">Status</th>
+            <div class="col-12 d-flex justify-content-center mt-2">
+                <h2>MY Gigs History</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12  d-flex justify-content-center mt-2 ">
+                <a href="{% url 'home' %}" class="btn text-white bg-info">Back</a>
+            </div>
+        </div>
+        {% if past_gigs %}
+            <div class="row">
+                <div class="col-12">
+                    <div class="table-responsive-sm mt-3">
+                        <table class="table mt-5 border text-center">
+                            <thead class=" thead-dark ">
+                                <tr>
+                                    <th scope="col ">#</th>
+                                    <th scope="col ">Date</th>
+                                    <th scope="col ">Venue</th>
+                                    <th scope="col ">Cash</th>
+                                    <th scope="col ">Status</th>
 
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% if past_gigs %}
+                                </tr>
+                            </thead>
+                            <tbody>
                                 {% for gig in past_gigs %}
                                     <tr class="rejected_gig">
                                         <th scope="row ">{{ forloop.counter }}</th>
@@ -32,12 +42,24 @@
                                         {% endif %}
                                     </tr>
                                 {% endfor %}
-                            {% endif %}
-                            <tr class="confirmed_gig">
-                        </tbody>
-                    </table>
+                                <tr class="confirmed_gig">
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-        </div>
+        {% else %}
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 mt-5">
+                        <div class="jumbotron bg-dark text-center text-white">
+                            <img src="{% static 'images/flamingo_sunglass_square.jpg' %}" alt="flamingo with sunglasses" class="flamingo_image" />
+                            <h1 class="display-4 logo-jumbo">Hey DJ!</h1>
+                            <p class="lead">You still don't have any completed gig yet.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
     </div>
 {% endblock %}
