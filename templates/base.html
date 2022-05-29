@@ -48,6 +48,17 @@
             </ul>
         </div>
     </nav>
+    <div class="container">
+        <div class="row">
+          <div class="col-12 text-justify">
+            {% for message in messages %}
+                <div class="alert {{ message.tags }} alert-dismissible fade show" id="msg" role="alert">
+                    {{ message | safe }}
+                </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
     <main class="flex-shrink-0 main-bg">
         <!--Initial of the index template-->
         {% block content %}
@@ -69,6 +80,6 @@
         ></a>
       </p>
     </footer>
-    <!--<script src="script.js"></script>-->
+    <script src="{% static 'js/script.js' %}"></script>
   </body>
 </html>

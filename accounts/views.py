@@ -27,7 +27,7 @@ class LoginView(View):
 
         if user is not None:
             login(request, user)
-            # messages.success(request, (f"Welcome back {user.user_name}"))
+            messages.success(request, (f"Welcome back {user.user_name}"))
             print("Entered")
             return redirect('home')
 
@@ -35,8 +35,7 @@ class LoginView(View):
             messages.error(request,  (
                 "An error ocurred with the login, please try again."
                 ))
-            print("Error")
-            return render(request, 'login')
+            return render(request, 'login.html')
 
 
 class LogoutView(View):
@@ -77,6 +76,9 @@ class RegistrateUser(View):
 
             return redirect('home')
         else:
+            messages.error(request, (
+                "Something went wrong, please try it again."
+            ))
             return render(
                 request,
                 'register.html', {
@@ -139,6 +141,9 @@ class DeleteUser(View):
         """Delete from the database"""
         if self.request.user.is_superuser:
             dj = get_object_or_404(NewDjUser, user_name=username)
+            messages.info(request, (
+                f"User {dj.user_name} was deleted!"
+            ))
             dj.delete()
 
             return redirect('home')

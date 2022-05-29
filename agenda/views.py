@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404, redirect
+from django.contrib import messages
 from django.views import View
 from django.core.paginator import Paginator
 from .models import Gig
@@ -118,9 +119,22 @@ class CreateGig(View):
 
         form = GigCreationForm(request.POST)
         if form.is_valid():
+            messages.success(request, (
+                "New gig created!"
+            ))
             form.save()
 
             return redirect('home')
+        else:
+            messages.error(request, (
+                "Oops something went wrong, try it again."
+            ))
+            return render(
+                request, 'create_gig.html',
+                {
+                    'form': form,
+                }
+            )
 
 
 class DeleteGig(View):
@@ -131,6 +145,9 @@ class DeleteGig(View):
 
         if self.request.user.is_superuser:
             gig = get_object_or_404(Gig, slug=slug)
+            messages.info(request, (
+                "Gig deleted!"
+            ))
             gig.delete()
 
             return redirect('home')
@@ -159,6 +176,9 @@ class CreateVenue(View):
 
         form = VenueCreationForm(request.POST)
         if form.is_valid():
+            messages.success(request, (
+                "New venue created!"
+            ))
             form.save()
 
             return redirect('home')
@@ -192,6 +212,9 @@ class AceptGig(View):
         venue = gig.venue
 
         gig.status = 1
+        messages.info(request, (
+            "Gig proposal accepted!"
+        ))
         gig.save()
 
         return render(
@@ -212,6 +235,9 @@ class RefuseGig(View):
         gig = get_object_or_404(Gig, slug=slug)
 
         gig.status = 2
+        messages.info(request, (
+            "Gig refused!"
+        ))
         gig.save()
 
         return redirect('home')
@@ -244,6 +270,20 @@ class UpdateGig(View):
         form = GigCreationForm(request.POST, instance=gig)
 
         if form.is_valid():
+            messages.success(request, (
+                "Gig updated!"
+            ))
             form.save()
-
-        return redirect('home')
+            return redirect('home')
+        else:
+            messages.error(request, (
+                "Oops, something went worng."
+            ))
+            return render(
+                request,
+                'edit_gig.html',
+                {
+                    'form': form,
+                    'gig': gig,
+                }
+            )
