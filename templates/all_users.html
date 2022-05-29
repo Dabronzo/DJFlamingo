@@ -16,7 +16,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="table-responsive-sm mt-3">
-                    <table class="table mt-5 border text-center">
+                    <table class="table mt-5 border text-center" id="dj-table">
                         <thead class=" thead-dark ">
                             <tr>
                                 <th scope="col ">#</th>
@@ -31,7 +31,7 @@
                             {% if all_users %}
                                 {% for user in all_users %}
                                     <tr class="rejected_gig text-white">
-                                        <th scope="row ">{{ forloop.counter }}</th>
+                                        <th scope="row " id="dj-table-id">{{ forloop.counter }}</th>
                                         <td>{{ user.user_name }}</td>
                                         <td>{{ user.email }}</td>
                                         {% if user.is_staff %}
@@ -40,7 +40,7 @@
                                         <td>No</td>
                                         {% endif %}
                                         <td>
-                                            <a href="{% url 'user_details' user.user_name %}" class="btn login-custom p-2 mx-1">Update</a>
+                                            <a href="{% url 'user_details' user.user_name %}" class="btn login-custom p-2 mx-1">View Details</a>
                                         </td>
                                 {% endfor %}
                             {% endif %}
