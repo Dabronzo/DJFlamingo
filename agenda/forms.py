@@ -41,7 +41,7 @@ class GigCreationForm(ModelForm):
                 attrs={'type': 'time'}
                 ),
             'time_duration': forms.TextInput(
-                attrs={'class': 'form-control', 'placeholder': 'Event Name'}
+                attrs={'class': 'form-control', 'placeholder': 'eg: 1 hour'}
                 ),
             'dj': forms.Select(
                 attrs={

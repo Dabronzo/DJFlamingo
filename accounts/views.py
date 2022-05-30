@@ -28,7 +28,6 @@ class LoginView(View):
         if user is not None:
             login(request, user)
             messages.success(request, (f"Welcome back {user.user_name}"))
-            print("Entered")
             return redirect('home')
 
         else:
