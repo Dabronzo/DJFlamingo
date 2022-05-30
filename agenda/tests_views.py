@@ -1,4 +1,5 @@
 from django.test import TestCase
+from .models import Gig
 
 
 class TestViews(TestCase):
