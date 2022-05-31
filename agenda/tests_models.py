@@ -16,7 +16,7 @@ class TestModels(TestCase):
         self.djuser = NewDjUser.objects.create(
             user_name='djtest',
             is_superuser=False,
-            email='testemail',
+            email='test@email',
             is_staff=False,
             password='testpassword'
         )
