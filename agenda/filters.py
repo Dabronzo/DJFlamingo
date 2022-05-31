@@ -13,7 +13,7 @@ class GigFilter(FilterSet):
         input_formats=["%d/%m/%Y"],
         widget=DateInput(attrs={'placeholder': 'dd/mm/yy'}),
         )
-    
+
     end_date = DateFilter(
         field_name='date',
         lookup_expr='lte',

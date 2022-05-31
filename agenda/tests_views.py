@@ -1,16 +1,16 @@
 from django.test import TestCase
-from .models import Gig
 
 
 class TestViews(TestCase):
-    """Test class for views in agenda"""
+    """
+    Test class for views in agenda. This class
+    will only test if the user is not registered the site
+    shall display a landing page
+    
+    """
 
     def test_landing_page_anonymous_user(self):
         response = self.client.get('')
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'landing.html')
 
-    def test_login_view(self):
-        response = self.client.get('/accounts/login')
-        self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'login.html')
