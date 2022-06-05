@@ -63,5 +63,16 @@
                 {% endif %}
             </div>
         </div>
+        <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center">
+                {% if gigs_history.has_previous %}
+                    <li><a href="?page={{ gigs_history.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
+                {% endif %}
+                {% if gigs_history.has_next %}
+                    <li><a href="?page={{ gigs_history.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+    
+                {% endif %}
+            </ul>
+        </nav>
     </div>
 {% endblock %}

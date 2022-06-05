@@ -19,12 +19,17 @@ class AllGigsHistory(View):
             for gig in queryset:
                 if gig.days_to < 0:
                     gigs_history.append(gig)
+            
+            # Pagination
+            p = Paginator(gigs_history, 15)
+            page = request.GET.get('page')
+            final_gigs_history = p.get_page(page)
 
             return render(
                 request,
                 'gigs_history.html',
                 {
-                    'gigs_history': gigs_history,
+                    'gigs_history': final_gigs_history,
                 }
             )
         else:
@@ -44,10 +49,15 @@ class MyGigsHistory(View):
             if gig.days_to < 0:
                 past_gigs.append(gig)
 
+        # Pagination
+        p = Paginator(past_gigs, 15)
+        page = request.GET.get('page')
+        past_gigs_p = p.get_page(page)
+
         return render(
             request, 'history.html',
             {
-                'past_gigs': past_gigs,
+                'past_gigs': past_gigs_p,
             }
         )
 
