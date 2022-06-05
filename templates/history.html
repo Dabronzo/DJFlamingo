@@ -5,7 +5,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12 d-flex justify-content-center mt-2">
-                <h2>MY Gigs History</h2>
+                <h2>My gigs history</h2>
             </div>
         </div>
         <div class="row">
@@ -17,7 +17,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="table-responsive-sm mt-3">
-                        <table class="table mt-5 border text-center" id="history-table">
+                        <table class="table table-custom-allign mt-5 border text-center" id="history-table">
                             <thead class=" thead-dark ">
                                 <tr>
                                     <th scope="col ">#</th>
@@ -30,7 +30,7 @@
                             </thead>
                             <tbody>
                                 {% for gig in past_gigs %}
-                                    <tr class="rejected_gig">
+                                    <tr class="rejected_gig text-white">
                                         <th scope="row ">{{ forloop.counter }}</th>
                                         <td>{{ gig.date }}</td>
                                         <td>{{ gig.venue.name }}</td>

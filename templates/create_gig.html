@@ -5,7 +5,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12 my-5">
-                <a href="{% url 'home' %}" class="btn text-white bg-info mb-3">Back to Gigs List</a>
+                <a href="{% url 'home' %}" class="btn text-white bg-info mb-3">Back to gigs</a>
                 <h2>Create a Gig</h2>
                 <form class="form-custom w-50 py-5 px-5" method="POST" action="{% url 'create_gig' %}">
                     {% csrf_token %}

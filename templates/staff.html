@@ -5,15 +5,15 @@
     <div class="container">
         <div class="row">
             <div class="col-12 d-flex justify-content-center mt-2">
-                <h2>All Gigs List</h2>
+                <h2>All gigs</h2>
             </div>
         </div>
         <div class="row">
             <div class="col-12  d-flex justify-content-center mt-2 ">
-                <a href="{% url 'create_gig' %}" class="btn_custom menu_admin text-white bg-info">Create Gig</a>
-                <a href="{% url 'create_venue' %}" class="btn_custom menu_admin text-white bg-info">Create New Venue</a>
-                <a href="{% url 'all_users' %}" class="btn_custom menu_admin text-white bg-info">View Registered DJ's</a>
-                <a href="{% url 'gigs_history' %}" class="btn_custom menu_admin text-white bg-info">View Passed Gigs</a>
+                <a href="{% url 'create_gig' %}" class="btn_custom menu_admin text-white bg-info">Create a gig</a>
+                <a href="{% url 'create_venue' %}" class="btn_custom menu_admin text-white bg-info">Create a venue</a>
+                <a href="{% url 'all_users' %}" class="btn_custom menu_admin text-white bg-info">My Dj's</a>
+                <a href="{% url 'gigs_history' %}" class="btn_custom menu_admin text-white bg-info">Past gigs</a>
             </div>
         </div>
         <div class="row">
@@ -31,7 +31,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="table-responsive-sm mt-3">
-                        <table class="table mt-5 border text-center">
+                        <table class="table table-custom-allign mt-5 border text-center">
                             <thead class=" thead-dark ">
                                 <tr>
                                     <th scope="col ">Date</th>
@@ -76,7 +76,7 @@
                                                 <td>Not Transferred</td>
                                             {% endif %}
                                                 <td>
-                                                    <a href="{% url 'gig_details' gig.slug %}" class="btn btn-primary p-2 mx-1 ">View Detail</a>
+                                                    <a href="{% url 'gig_details' gig.slug %}" class="btn login-custom p-2 mx-1 ">View Detail</a>
                                                 </td>
                                         {% endif %}
                                     {% endfor %}
