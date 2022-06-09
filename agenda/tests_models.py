@@ -11,15 +11,14 @@ class TestModels(TestCase):
     properties fo the Gig Model class
     """
 
+    # Set up to simulate gig, user and venue for testing
     def setUp(self):
 
-        self.djuser = NewDjUser.objects.create(
-            user_name='djtest',
-            is_superuser=False,
-            email='test@email',
-            is_staff=False,
-            password='testpassword'
-        )
+        self.djuser = NewDjUser.objects.create_user(
+            'test@email.com',
+            'testdj',
+            'testpassword'
+            )
 
         self.venue = Venue.objects.create(
             name='testvenue',
@@ -57,6 +56,7 @@ class TestModels(TestCase):
         newgig = Gig.objects.filter(name='Test')
         self.assertEqual(newgig[0].name, 'Test')
 
+    # Testing the models properties
     def test_days_to_property(self):
         """Test for the days_to property"""
 
@@ -76,3 +76,22 @@ class TestModels(TestCase):
         """
 
         self.assertEqual(self.gig.calc_agency_cash, 5)
+
+    def test_if_dj_created(self):
+        """ If the Dj is created properly"""
+
+        dj_test = NewDjUser.objects.filter(user_name='djtest')
+        self.assertEqual(dj_test[0].user_name, 'djtest')
+
+    def test_retrun_string_for_gig(self):
+        """return string name"""
+
+        newgig = Gig.objects.filter(name='Test')
+        this_gig = newgig[0]
+        self.assertEqual(str(this_gig), f"Gig on {this_gig.date} at {this_gig.venue} assined to {this_gig.dj}")
+    
+    def test_return_string_venue(self):
+        """Return string name"""
+        venue = Venue.objects.filter(name='testvenue')
+        this_venue = venue[0]
+        self.assertEqual(str(this_venue), f"{this_venue.name}")
