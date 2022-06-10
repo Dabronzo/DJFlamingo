@@ -36,7 +36,7 @@ a {
 }
 
 #jumbo-out {
-    background: url("images/jumbo_pic.jpg") no-repeat center center;
+    background: url("https://res.cloudinary.com/dabronzo/image/upload/v1654858901/jumbo_pic_t6uz4w.jpg") no-repeat center center;
     background-size: cover;
     transform: scaleX(-1);
 }
