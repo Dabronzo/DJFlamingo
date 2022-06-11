@@ -192,6 +192,16 @@ class CreateVenue(View):
             form.save()
 
             return redirect('home')
+        else:
+            messages.error(request, (
+                "Somthing went wrong, please try again"
+            ))
+            return render(
+               request, 'create_venue.html',
+               {
+                   'form': form,
+               }
+            )
 
 
 class GigDetails(View):

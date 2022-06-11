@@ -57,3 +57,20 @@ class TestModel(TestCase):
             user_name="testdj2",
             password="testpassword2"
             )
+
+    def test_if_superuser_fails(self):
+        """
+        Testing if during the superuser creation
+        the supeuser is set as false
+        expect raise error
+        """
+
+        self.assertRaises(
+            ValueError,
+            NewDjUser.objects.create_superuser,
+            email="failadim@email.com",
+            user_name='adminfail',
+            password='testfailpassword',
+            is_superuser=False
+            )
+        

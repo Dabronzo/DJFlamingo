@@ -69,7 +69,7 @@ class TestModels(TestCase):
         """
         self.assertEqual(self.gig.calculated_fees, 95)
 
-    def test_if_agency_cahs_is_calculated(self):
+    def test_if_agency_tax_is_calculated(self):
         """
         Test for the property that calculates the
         agency cash for the gig
@@ -80,8 +80,8 @@ class TestModels(TestCase):
     def test_if_dj_created(self):
         """ If the Dj is created properly"""
 
-        dj_test = NewDjUser.objects.filter(user_name='djtest')
-        self.assertEqual(dj_test[0].user_name, 'djtest')
+        dj_test = NewDjUser.objects.filter(user_name='testdj')
+        self.assertEqual(dj_test[0].user_name, 'testdj')
 
     def test_retrun_string_for_gig(self):
         """return string name"""
@@ -95,3 +95,4 @@ class TestModels(TestCase):
         venue = Venue.objects.filter(name='testvenue')
         this_venue = venue[0]
         self.assertEqual(str(this_venue), f"{this_venue.name}")
+

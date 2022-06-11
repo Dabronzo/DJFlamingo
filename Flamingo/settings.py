@@ -154,7 +154,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 AUTH_USER_MODEL = 'accounts.NewDjUser'
 
 
-#Media
+# Media
 MEDIA_URL = '/media/'
 DEAFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
