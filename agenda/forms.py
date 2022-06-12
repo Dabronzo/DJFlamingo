@@ -12,7 +12,7 @@ class GigCreationForm(ModelForm):
     """Class form to gigs"""
 
     date = forms.DateField(
-        widget=DateInput(attrs={'class': 'form-control', 'placeholder': ''})
+        widget=DateInput(attrs={'class': 'form-control'})
         )
     is_payed = forms.BooleanField(required=False)
 
@@ -46,13 +46,11 @@ class GigCreationForm(ModelForm):
             'dj': forms.Select(
                 attrs={
                     'class': 'form-select form-control',
-                    'placeholder': 'DJ'
                     }
                 ),
             'venue': forms.Select(
                 attrs={
                     'class': 'form-select form-control',
-                    'placeholder': 'Select a venue'
                     }
                 ),
             'fees': forms.NumberInput(
@@ -64,7 +62,6 @@ class GigCreationForm(ModelForm):
             'status': forms.Select(
                 attrs={
                     'class': 'form-select form-control',
-                    'placeholder': 'Select the status of the gig'
                     }
                 ),
             'notes': forms.Textarea(
