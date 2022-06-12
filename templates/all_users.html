@@ -5,7 +5,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12 d-flex justify-content-center mt-2">
-                <h2 class="text-center">My Dj's</i></h2>
+                <h2 class="text-center">My Dj's</h2>
             </div>
         </div>
         <div class="row">
@@ -19,11 +19,11 @@
                     <table class="table table-custom-allign mt-5 border text-center" id="dj-table">
                         <thead class=" thead-dark ">
                             <tr>
-                                <th scope="col ">#</th>
-                                <th scope="col ">DJ Name</th>
-                                <th scope="col ">Email</th>
-                                <th scope="col ">Staff</th>
-                                <th scope="col ">Action</th>
+                                <th scope="col">#</th>
+                                <th scope="col">DJ Name</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Staff</th>
+                                <th scope="col">Action</th>
 
                             </tr>
                         </thead>
@@ -31,7 +31,7 @@
                             {% if all_users %}
                                 {% for user in all_users %}
                                     <tr class="rejected_gig text-white">
-                                        <th scope="row " id="dj-table-id">{{ forloop.counter }}</th>
+                                        <th scope="row">{{ forloop.counter }}</th>
                                         <td>{{ user.user_name }}</td>
                                         <td>{{ user.email }}</td>
                                         {% if user.is_staff %}

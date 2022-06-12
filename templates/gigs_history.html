@@ -20,19 +20,19 @@
                         <table class="table table-custom-allign mt-5 border text-center" id="gigs-history">
                             <thead class=" thead-dark ">
                                 <tr>
-                                    <th scope="col ">#</th>
-                                    <th scope="col ">Date</th>
-                                    <th scope="col ">Name</th>
-                                    <th scope="col ">Venue</th>
-                                    <th scope="col ">Cash</th>
-                                    <th scope="col ">Status</th>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Venue</th>
+                                    <th scope="col">Cash</th>
+                                    <th scope="col">Status</th>
 
                                 </tr>
                             </thead>
                             <tbody>
                                 {% for gig in gigs_history %}
                                     <tr class="rejected_gig text-white">
-                                        <th scope="row ">{{ forloop.counter }}</th>
+                                        <th scope="row">{{ forloop.counter }}</th>
                                         <td>{{ gig.date }}</td>
                                         <td>{{ gig.dj }}</td>
                                         <td>{{ gig.venue.name }}</td>
@@ -44,7 +44,6 @@
                                         {% endif %}
                                         </tr>
                                 {% endfor %}
-                                <tr class="confirmed_gig">
                             </tbody>
                         </table>
                     </div>

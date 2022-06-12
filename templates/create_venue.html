@@ -10,36 +10,33 @@
             <form class="form-custom w-50 py-5 px-5" method="POST" action="{% url 'create_venue' %}">
                 {% csrf_token %}
                 <div class="form-group">
-                    <label for="exampleInputEmail1" class="text-white">Venue Name</label>
-                    {{ form.name }}
-        <small id="emailHelp" class="form-text text-white"
-            >The name is mandatory</small
-        >
+                    <label class="text-white">Venue Name</label>
+                        {{ form.name }}
+                    <small id="emailHelp" class="form-text text-white">The name is mandatory</small>
+                </div>
+                <div class="form-group">
+                    <label class="text-white">Address</label>
+                        {{ form.address }}
+                </div>
+                <div class="form-group">
+                    <label class="text-white">City</label>
+                        {{ form.city }}
+                </div>
+                <div class="form-group">
+                    <label class="text-white">Contact Info</label>
+                        {{ form.contact }}
+                </div>
+                <div class="form-group">
+                    <label class="text-white">Website</label>
+                        {{ form.website }}
+                </div>
+                <div class="form-group">
+                    <label class="text-white">Info</label>
+                        {{ form.additional_info }}
+                </div>
+                <button type="submit" class="btn login-custom">Create</button>
+            </form>
         </div>
-        <div class="form-group">
-        <label for="exampleInputPassword1" class="text-white">Address</label>
-                    {{ form.address }}
-        </div>
-        <div class="form-group">
-        <label class="text-white">City</label>
-                    {{ form.city }}
-        </div>
-        <div class="form-group">
-            <label for="exampleInputEmail1" class="text-white">Contact Info</label>
-                {{ form.contact }}
-        </div>
-        <div class="form-group">
-            <label for="exampleInputEmail1" class="text-white">Website</label>
-                {{ form.website }}
-        </div>
-        <div class="form-group">
-            <label for="exampleInputEmail1" class="text-white">Info</label>
-                {{ form.additional_info }}
-        </div>
-        <button type="submit" class="btn login-custom">Create</button>
-        </div>
-    </form>
     </div>
-</div>
 </div>
 {% endblock content %}
