@@ -10,7 +10,7 @@ from datetime import date, datetime
 
 class TestViews(TestCase):
     """Dockstring"""
-    
+
     def setUp(self):
 
         self.djuser = NewDjUser.objects.create_user(
@@ -24,7 +24,7 @@ class TestViews(TestCase):
             'testadmin',
             'adminpassword'
             )
-        
+
         self.venue = Venue.objects.create(
             name='testvenue',
             address='testaddress',
@@ -139,7 +139,7 @@ class TestViews(TestCase):
             all_messages[0].message,
             f"Welcome back {self.djuser.user_name}"
             )
-        
+
     def test_error_on_login(self):
         """ If somethin is worng if login"""
 
@@ -177,7 +177,7 @@ class TestViews(TestCase):
         # login with admin credentials
         self.client.login(email='admin@email.com', password='adminpassword')
         response = self.client.get('/accounts/all_users')
-        
+
         # testing response code and template
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'all_users.html')
@@ -195,7 +195,7 @@ class TestViews(TestCase):
 
         # testing redirecting
         self.assertRedirects(response, '/')
-        
+
     def test_dj_details_view(self):
         """
         Testing the view to display dj
@@ -207,19 +207,18 @@ class TestViews(TestCase):
         response = self.client.get(
             f'/accounts/user_details/{self.djuser.user_name}'
             )
-        
+
         # testing if the correct queryset is used
         dj_gigs = Gig.objects.filter(dj=self.djuser.pk)
         # print(dj_gigs)
         self.assertQuerysetEqual(
-            dj_gigs, 
+            dj_gigs,
             ['<Gig: Gig on 2022-06-11 at testvenue assined to testdj>']
             )
 
-
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'user_details.html')
-    
+
     def test_dj_details_failure(self):
         """
         Testing if the view redirect to home
@@ -251,6 +250,6 @@ class TestViews(TestCase):
             all_messages[0].message,
             f"User {self.djuser.user_name} was deleted!"
             )
-        
+
         # testing redirect
         self.assertRedirects(response, '/')

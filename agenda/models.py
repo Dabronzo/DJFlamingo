@@ -78,7 +78,8 @@ class Gig(models.Model):
         ordering = ['date']
 
     def __str__(self):
-        return f"Gig on {self.date} at {self.venue.name} assined to {self.dj.user_name}"
+
+        return f"Gig on {self.date} at {self.venue.name} assined to {self.dj.user_name}"    
 
     def save(self, *args, **kwargs):
         """Save method to create a new gig"""

@@ -19,7 +19,7 @@ class AllGigsHistory(View):
             for gig in queryset:
                 if gig.days_to < 0:
                     gigs_history.append(gig)
-            
+
             # Pagination
             p = Paginator(gigs_history, 15)
             page = request.GET.get('page')

@@ -7,7 +7,7 @@ from accounts.models import NewDjUser
 class TestModels(TestCase):
     """
     Class to test the models of agenda app. It will
-    create a Gig, Venue and a User for test the 
+    create a Gig, Venue and a User for test the
     properties fo the Gig Model class
     """
 
@@ -87,12 +87,14 @@ class TestModels(TestCase):
         """return string name"""
 
         newgig = Gig.objects.filter(name='Test')
-        this_gig = newgig[0]
-        self.assertEqual(str(this_gig), f"Gig on {this_gig.date} at {this_gig.venue} assined to {this_gig.dj}")
-    
+        gig = newgig[0]
+        self.assertEqual(
+            str(this_gig),
+            f"Gig on {gig.date} at {gig.venue} assined to {gig.dj}"
+            )
+
     def test_return_string_venue(self):
         """Return string name"""
         venue = Venue.objects.filter(name='testvenue')
         this_venue = venue[0]
         self.assertEqual(str(this_venue), f"{this_venue.name}")
-

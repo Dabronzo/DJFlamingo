@@ -73,4 +73,3 @@ class TestModel(TestCase):
             password='testfailpassword',
             is_superuser=False
             )
-        

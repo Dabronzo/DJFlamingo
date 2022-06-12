@@ -28,7 +28,7 @@ class TestAccountForms(TestCase):
         Test to make sure that the correct
         fields are being displayed on the form
         """
-        
+
         form = RegistrationForm()
         self.assertEqual(
             form.Meta.fields,

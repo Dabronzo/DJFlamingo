@@ -60,4 +60,3 @@ class TestVenueCreationForm(TestCase):
                 'contact',
                 'additional_info'
             ))
-

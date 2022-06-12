@@ -54,4 +54,3 @@ class NewDjUser(AbstractBaseUser, PermissionsMixin):
     def __str__(self):
         """string method"""
         return f"{self.user_name}"
-

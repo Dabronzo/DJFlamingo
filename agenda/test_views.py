@@ -1,6 +1,6 @@
 from django.test import TestCase
 from django.contrib.messages import get_messages
-from datetime import date, datetime,timedelta
+from datetime import date, datetime, timedelta
 from accounts.models import NewDjUser
 from .models import Gig, Venue
 
@@ -8,6 +8,7 @@ from .models import Gig, Venue
 current_time = datetime.now().strftime('%H:%M:%S')
 # get yesterday to test history
 yesterday = datetime.now() - timedelta(1)
+
 
 class TestViews(TestCase):
     """
@@ -29,7 +30,7 @@ class TestViews(TestCase):
             'testadmin',
             'adminpassword'
             )
-        
+
         self.venue = Venue.objects.create(
             name='testvenue',
             address='testaddress',
@@ -84,7 +85,7 @@ class TestViews(TestCase):
         response = self.client.get('')
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'landing.html')
-    
+
     def test_all_gigs_history(self):
         """
         Test if the view is working
@@ -101,7 +102,7 @@ class TestViews(TestCase):
         # test status code and template
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'gigs_history.html')
-    
+
     def test_gigs_history_no_admin(self):
         """ Testing if normar user
         redirects to home"""
@@ -139,7 +140,7 @@ class TestViews(TestCase):
             password='adminpassword'
         )
         response_get = self.client.get('/create_gig')
-        
+
         # testing code and template
         self.assertEqual(response_get.status_code, 200)
         self.assertTemplateUsed(response_get, 'create_gig.html')
@@ -169,7 +170,7 @@ class TestViews(TestCase):
         all_messages = list(get_messages(response_post.wsgi_request))
         self.assertEqual(
             all_messages[0].message,
-             "New gig created!"
+            "New gig created!"
             )
 
     def test_create_gig_failure_user(self):
@@ -221,13 +222,12 @@ class TestViews(TestCase):
         all_messages = list(get_messages(response.wsgi_request))
         self.assertEqual(
             all_messages[0].message,
-             "Gig deleted!"
+            "Gig deleted!"
             )
 
-        
         # testing redirect
         self.assertRedirects(response, '/')
-    
+
     def test_create_venue(self):
         """
         Testing the create venue view
@@ -281,10 +281,10 @@ class TestViews(TestCase):
             all_messages[0].message,
             "Somthing went wrong, please try again"
             )
-        
+
     def test_create_venue_failure(self):
         """
-        Test if only the admin can access the 
+        Test if only the admin can access the
         create venue
         """
 
@@ -296,7 +296,7 @@ class TestViews(TestCase):
 
     def test_gig_details_view(self):
         """
-        Test for the right template and 
+        Test for the right template and
         user permissions
         """
 
@@ -317,7 +317,7 @@ class TestViews(TestCase):
 
         self.assertEqual(gig.status, 1)
         self.assertTemplateUsed(response, 'gig_details.html')
-        
+
         # testing message
         all_messages = list(get_messages(response.wsgi_request))
         self.assertEqual(
@@ -342,13 +342,13 @@ class TestViews(TestCase):
             all_messages[0].message,
             "Gig refused!"
             )
-    
+
     def test_udpate_gig(self):
         """
         Test for the update gig
         """
 
-        # login as admin    
+        # login as admin
         self.client.login(email='admin@email.com', password='adminpassword')
 
         # testing get method
@@ -372,7 +372,7 @@ class TestViews(TestCase):
             status=0,
             notes=''
             ))
-        
+
         self.assertEqual(response_post.status_code, 302)
         self.assertRedirects(response_post, '/')
 
@@ -397,7 +397,7 @@ class TestViews(TestCase):
             status=0,
             notes=''
             ))
-        
+
         self.assertTemplateUsed(response_fail, 'edit_gig.html')
         # testing for sucess message
         all_messages = list(get_messages(response_fail.wsgi_request))
