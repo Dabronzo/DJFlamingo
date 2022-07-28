@@ -31,18 +31,20 @@
                         <tbody>
                             {% if all_users %}
                                 {% for user in all_users %}
-                                    <tr class="rejected_gig text-white">
-                                        <th scope="row">{{ forloop.counter }}</th>
-                                        <td>{{ user.user_name }}</td>
-                                        <td>{{ user.email }}</td>
-                                        {% if user.is_staff %}
-                                        <td>Yes</td>
-                                        {% else %}
-                                        <td>No</td>
-                                        {% endif %}
-                                        <td>
-                                            <a href="{% url 'user_details' user.user_name %}" class="btn login-custom p-2 mx-1">View Details</a>
-                                        </td>
+                                    {% if not user.is_staff  %}
+                                        <tr class="rejected_gig text-white">
+                                            <th scope="row">{{ forloop.counter }}</th>
+                                            <td>{{ user.user_name }}</td>
+                                            <td>{{ user.email }}</td>
+                                            {% if user.is_staff %}
+                                            <td>Yes</td>
+                                            {% else %}
+                                            <td>No</td>
+                                            {% endif %}
+                                            <td>
+                                                <a href="{% url 'user_details' user.user_name %}" class="btn login-custom p-2 mx-1">View Details</a>
+                                            </td>
+                                    {% endif %}
                                 {% endfor %}
                             {% endif %}
                         </tbody>
