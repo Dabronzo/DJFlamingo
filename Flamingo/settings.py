@@ -156,7 +156,7 @@ AUTH_USER_MODEL = 'accounts.NewDjUser'
 
 # Media
 MEDIA_URL = '/media/'
-DEAFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

@@ -1,3 +1,10 @@
+body {
+    font-family: 'Poppins', sans-serif;
+
+}
+
+
+
 a {
     text-decoration: none;
     color: rosybrown;
@@ -110,7 +117,7 @@ only screen and (max-width: 760px) {
 
     .btn_custom{
         font-size: 0.75rem;
-        padding: 0;
+        padding: 3px
     }
 
 	/* Force table to not be like tables anymore */
@@ -194,12 +201,12 @@ only screen and (max-width: 760px) {
     }
 
     #filter_form{
-        font-size: 0.8rem !important;
+        font-size: 0.7rem !important;
     }
 
     #filter_form > label{
         font-size: 0.8rem !important;
-        margin-left: 8px !important;
+        margin-left: 3px !important;
     }
 
     .list-group-item{

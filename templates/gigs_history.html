@@ -8,6 +8,7 @@
                 <h2>Gigs History</h2>
             </div>
         </div>
+        <!--Menu Btn-->
         <div class="row">
             <div class="col-12 d-flex justify-content-center mt-2">
                 <a href="{% url 'home' %}" class="btn text-white bg-info mb-3">Back to gigs</a>
@@ -17,6 +18,7 @@
             <div class="col-12">
                 {% if gigs_history %}
                     <div class="table-responsive-sm mt-3">
+                        <!--Table-->
                         <table class="table table-custom-allign mt-5 border text-center" id="gigs-history">
                             <thead class=" thead-dark ">
                                 <tr>
@@ -48,6 +50,7 @@
                         </table>
                     </div>
                 {% else %}
+                    <!--In case no gigs history-->
                     <div class="container">
                         <div class="row">
                             <div class="col-12 mt-5">

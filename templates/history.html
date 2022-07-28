@@ -8,6 +8,7 @@
                 <h2>My gigs history</h2>
             </div>
         </div>
+        <!--Menu Btn-->
         <div class="row">
             <div class="col-12  d-flex justify-content-center mt-2 ">
                 <a href="{% url 'home' %}" class="btn text-white bg-info">Back</a>
@@ -17,6 +18,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="table-responsive-sm mt-3">
+                        <!--Table-->
                         <table class="table table-custom-allign mt-5 border text-center" id="history-table">
                             <thead class=" thead-dark ">
                                 <tr>
@@ -48,6 +50,7 @@
                 </div>
             </div>
         {% else %}
+            <!--In case no gigs history-->
             <div class="container">
                 <div class="row">
                     <div class="col-12 mt-5">
