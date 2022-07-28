@@ -432,5 +432,36 @@ Some minors styling bugs were detected however their occurrence does not interfe
 
 - At the main page of the admin user on the table that display all the gigs some of the list items have the border a little bit thicker than the others, making a slightly difference between rolls on the table.
 
+# Deployment
 
+This project is deployed on Heroku using the Code Institute's mock terminal
+
+## Heroku
+
+The site is hosted using Heroku, deployed directly from the master branch of GitHub. The deployed site will update automatically as new commits are pushed to the master branch.
+
+**To complete a heroku deployment you must follow the steps:**
+
+- Go to the Heroku's website.
+- Create an account if required or select log in.
+- From the Heroku dashboard, click on the “New” button in top righthand corner then "Create new app".
+- Enter a unique "App name" and "Choose a region" before clicking on "Create app".
+- Go to "Config Vars" under the "Settings" tab.
+- Click on "Reveals Config Vars" and enter the following information:
+    - CLOUDINARY_URL : add your cloudinary key here.
+    - DATABASE_URL : add the url from postgres database.
+    - SECRET_KEY = a secret key for your app.
+    - PORT : 8000
+- DISABLE_COLLECTSTATIC = 1 during development (Remove when deploying production!)
+- Go to "Buildpacks" section and click "Add buildpack".
+- Select "/herokupython" and click "Save changes"
+
+## Forking the Project
+
+- Login to GitHub.
+- Locate your desired repository.
+- Locate the fork option in the top-right hand corner of the repository page.
+- You will be asked where you want to fork it to.
+
+## Credits
 
