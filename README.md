@@ -1,4 +1,4 @@
-# DJ Flamingo DJ -  Gig Manager
+# Flamingo DJ -  Gig Manager
 
 Flamingo manager is a web application that was developed to be an useful tool for small artists and producers of the night life business. Currently, the application is set to handle a single agency/producer and its artists, with a possible extension in the future. There are two types of users: one is the admin (the super-user), who is the agency producer, responsible for arranging the events and picking one of the Dj's using the application. Additionally, admin can set the event to be confirmed or as a proposal, waiting for the designated Dj’s confirmation. The other type of user is the DJ, who can access the information about all of their events in addition to accepting and refusing the gigs. The events are displayed on the DJ main page chronologically.
 
