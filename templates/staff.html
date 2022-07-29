@@ -14,17 +14,22 @@
                 <a href="{% url 'create_gig' %}" class="btn_custom menu_admin text-white bg-info">Create a gig</a>
                 <a href="{% url 'create_venue' %}" class="btn_custom menu_admin text-white bg-info">Create a venue</a>
                 <a href="{% url 'all_users' %}" class="btn_custom menu_admin text-white bg-info">My Dj's</a>
-                <a href="{% url 'gigs_history' %}" class="btn_custom menu_admin text-white bg-info">Past gigs</a>
+                <a href="{% url 'gigs_history' %}" class="btn_custom menu_admin text-white bg-info">History</a>
             </div>
         </div>
         <!--Filters-->
+        <div class="row">
+            <div class="col-12 d-flex justify-content-center mt-3">
+                <h4 class="filter-title">Filters</h4>
+            </div>
+        </div>
         <div class="row">
             <div class="col-12">
                 <div class="card card-bory mt-3">
                     <form method="GET" id="filter_form">
                         {{ my_filter.form }}
 
-                        <button class="btn btn-primary" type="submit">Search</button>
+                        <button class="btn btn-primary searchBtn" type="submit">Search</button>
                     </form>
                 </div>
             </div>
@@ -91,18 +96,18 @@
         {% endif %}
     </div>
     <script>
-        $(document).ready(function($){
+       $(document).ready(function($){
             $("form").addClass("py-3 px-2");
             $("label").addClass("mx-2");
             $("button").addClass("mx-2");
 
             $('#exampleModal').on("show.bs.modal", function(e){
-                var gigName = $(e.relatedTarget).data('id');
+                const gigName = $(e.relatedTarget).data('id');
                 $(e.currentTarget).find('#innerModal').html(gigName);
                 $("#modalForm").attr('action', "someAction");
 
             })
-        })
+        }) 
        
     </script>
 {% endblock content %}

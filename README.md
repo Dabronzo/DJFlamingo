@@ -1,6 +1,12 @@
 # DJ Flamingo Gig Manager
 
-Flaming manager is a web application that was developed to be a useful tool for small artists and producers of the night life business. The application is currently set to handle a singe agency/producer and its artists, but with a possible extension in the future. There are two types of users, one is the admin or the super-user, that is the agency producer that is responsible for arrange the events from the venues and set to one of the DJs using the application. The admin also can set the event as confirmed or as a proposal waiting for the confirmation from the designed DJ. The other type of user is the DJ, that can access the information of all its events, accept and refuse it as well. The events are displayed on the DJ main page in order from the sooner to later.
+Flamingo manager is a web application that was developed to be an useful tool for small artists and producers of the night life business. Currently, the application is set to handle a single agency/producer and its artists, with a possible extension in the future. There are two types of users: one is the admin (the super-user), who is the agency producer, responsible for arranging the events and picking one of the Dj's using the application. Additionally, admin can set the event to be confirmed or as a proposal, waiting for the designated Dj’s confirmation. The other type of user is the DJ, who can access the information about all of their events in addition to accepting and refusing the gigs. The events are displayed on the DJ main page chronologically.
+
+
+
+# Table of Content
+
+1.[]
 
 # Technology Used
 ### Languages
@@ -36,9 +42,17 @@ For database tables vizualizations
 - **Microsoft Paint**
 For images and captures
 
-# Site Goals
+# Usage
 
-fill with some text
+As an admin, the user can login with the email and a password. The application will redirect to the main page of an admin, with all the gigs displayed on a table, a menu with options to create gigs, venues and see all the DJ’s and a History of gigs.  The admin can create a gig by filling up a form, assign it to a DJ, select the percentage for the producer’s fees. At the same way venues may be created to hold information about it. So, when create a gig the producer by setting the venue where the event will happen. The details of the gig will also make the venue information available for the users.
+
+After the gig is created it will be displayed at the main page of the admin along with the others, a filter feature is present so in case of high number of gigs on the table the admin can easily filter by, DJ, venue, and dates to find the desired information.
+
+To update or delete a gig the admin can access the button “view details” at the table of gigs and application will display a page with some more details about the selected gig. There the admin can click on update that will display a form to update or a button to delete the gig.
+
+As a DJ the user can login with the email and password to go to the main page. There is displayed the in a form of cards the user’s gigs. Above the gigs cards the are a menu button that brings to the history of gigs made by the user DJ.  The gig cards hold some basic information about the gig and a button access the details view. At the details view the DJ have more information about the event and the venue. In the case of the gig being a proposal made by the admin the user can accept or refuse it by pressing buttons at the bottom of the view.
+
+
 
 # UX
 
@@ -53,68 +67,67 @@ fill with some text
 
 ## User Stories
 ### Admin
-- As an **admin** I can **create, edit, and delete** gigs so that I can **update the gigs for the DJ**
-- As an **admin** I can **delete a selected user** so that the user data **will be deleted from database**
-- As an **admin** I can **set the agency tax** for each gig so that even if the tax changes in the future old gigs the old tax will remain
-- As an **admin** I can click to **see all the user** registered so that see a table with all users
-- As an **admin** I can **click in on gig to view** so that access **more info about it**
-- As an **admin** I can use a f**ilter bar on the admin/home** so that **select the data** that I want to be displayed on the table
+- As an **admin** I can **create, edit, and delete gigs** so that I could **update the gigs for the DJ**
+- As an **admin** I can **delete** a selected DJ so I can **update my team**
+- As an **admin** I can **set the agency tax** for each gig
+- As an **admin** I can click to **see all the user** registered to see a table with all users
+- As an **admin** I can **click in on gig to view** to access **more info about it**
+- As an **admin** I can use a **filter bar on the admin/home** to **select the data** which I want to be displayed on the table
 - As an **admin** I can **access the history** of the gigs so that I’ll have **stored data** from gigs
 
 ### User DJ Stories
-- As a **DJ/use**r I can accept or refuse a gig offer so that I can let the admin know my answer about a proposal
+- As a **DJ/user** I can accept or refuse a gig offer to let the admin know my choice about a proposal
 - As a **DJ/user** I can **click in on gig** to view so that **access more info about it**
-- As a **DJ user** I can **view my own gigs** by order of date so that I have a **general vision about my next gigs**
-- As a **DJ/user** I can **expect that the fees are calculated** so that know exactly how much I **should receive**
-- As a **DJ/user** I can **get a specific view if I don't have any gigs assigned** so that know about my current gigs situation
-- As a **user** I can **registrate or login** so that view **my page of gigs**
+- As a **DJ user** I can **view my own gigs** chronologically so that I have a **general vision about my next gigs**
+- As a **DJ/user** I can **expect that the fees are calculated** to know exactly how much I **should receive**
+- As a **DJ/user** I can **get a specific view if I don't have any gigs assigned** to know about my current gigs situation
+- As a **user** I can **registrate or login** to view **my page of gigs**
 
 # Development Planes
 
 ## Strategy
 
-The electronic music has conquered the world, the scene took the lead of the night life and DJ sets became a common thing, from small dance clubs to big international festivals. Naturally the producers and agencies behind those events grew as well and the electronic music was consolidated as crucial part of the entertainment business. However fresh new musicians and artists struggle to find a stage with good payment deal. At the most cases the music gigs are not the primary income for artists, so looking for gigs and managing them takes a long and precious time. Flaming manager is addressed to those small artists and producers that does not have time or the structure that big agencies and musicians have to manage their events.
+Electronic music has conquered the world, taking the lead of the night life and DJ sets have become a common thing, found both in clubbing and international festivals. Naturally, as the genre boomed, simultaneously the events, the producers, artists and their agencies grew too, escalating in the electronic music being consolidated as a crucial part of the entertainment business. However, upcoming and new artists struggle to find a stage that comes with a fair cost management scheme. Often, the music gigs are not the primary income of artists, thus looking for gigs and managing them takes precious time that they’re lacking. Flamingo manager is addressed to those small artists and producers who simply do not have time or structure to manage their events as well as the giants do.
 
 ### Target
 
-**Amateur or beginning DJs.**
+**Amateur or beginning DJ's.**
 
-The aim of the software is to provide to the DJ simple information about when, where, and how much I’ll make of each gig
+The aim of the software is to provide DJ's some simple information about when, where, and how much can be made at each gig.
 
 **Music and event producer.**
 
-For the admin is to provide tools to create and assign gigs for the musician, keep an overall view of the gigs and edit it if necessary
-
+The admin is provided with tools to create and assign gigs for the musician, keep an overall view of the gigs and edit, if necessary.
 
 
 
 
 ## Scope
 
-The scope of the software should cover all the features that will achieve functionalities discussed on the strategy and the objective of the product.
+The scope of the software should cover all of the features which achieve functionalities discussed on the strategy and the objective of the product.
 
-- **Require Features**
-    -  Only admins can create, delete, and edit gigs and venues
-    -  Display for each user its own gigs
-    -  Gigs can be created as a proposal or confirmed
+- **Required Features**
+    -  Only admins can create, delete, and edit gigs, and venues
+    -  Each user has a display of their own gigs
+    -  Gigs can be created as a proposal or already confirmed
     -  Users can accept or refuse a gig proposal
-    -  Gigs are displayed in order of date
-    -  Only display gigs with dates in future
-    -  Show history of past gigs
+    -  Gigs are displayed chronologically
+    -  Only display the upcoming gigs
+    -  Possibility to view the history of previous gigs
 
 - **Desired Features**
-    - Each gig shows how many days is due to
-    - Agency fees can be assigned differently for each gig
+    - Each gig shows a day count until the event
+    - Agency fees can vary between the gigs
 
 ## Skeleton
 
-Initially a wireframe was created to set the main layout for the software. The header and footer features are fixed, and the content is dynamic changing depending on the user action and attributes. However I didn’t create wireframes for the other pages since that the main layout were already chosen.
+A wireframe was created to set the main layout for the software. The header and footer features are fixed, and the content is dynamic: reacts to the user action, based on user type. 
 
-- ### User Agenda
+- ### DJ Agenda
 
-Home page where the user's gig are displayed by order and in cards
+Home page where the user's gig id is displayed chronologically.
 <details>
-<summary>View ser/DJ Agenda Home</summary>
+<summary>View DJ Agenda Home</summary>
 
 ![View Agenda User Home](/docs/images/app_design_home.png)
 </details>
@@ -122,7 +135,7 @@ Home page where the user's gig are displayed by order and in cards
 
 - ### Gig Details
 
-Details page that contains the main info and actions
+Details page contains the main info and options.
 <details>
 <summary>View Gig Details</summary>
 
@@ -131,15 +144,15 @@ Details page that contains the main info and actions
 <br/>
 
 ## Structure
-The project Flamingo is composed of two apps responsible for different functionality of the website.
+The project Flamingo is a composition of two apps responsible for different functionality of the website.
 
 - **Agenda App**
 
-Responsible for the gigs management engine, has the models for gigs and venues and the views are responsible for displaying information about the gigs and post actions to update them
+Responsible for the gigs management engine, has the models for gigs, venues, and the views, that responsible for **get** information about the gigs and **post** actions to update them.
 
-- **Acounts App**
+- **Accounts App**
 
-App that holds the functionality of the managing the user’s authentication and registration. It holds the custom model for the user, the views are responsible for the login, registration, and logout.
+App that holds the functionality of the user’s authentication and registration management. It also holds the custom model for the user, while the views are responsible for the login, registration, and logout.
 
 **Flowchart**
 <br/>
@@ -170,7 +183,7 @@ App that holds the functionality of the managing the user’s authentication and
 
 **Font**
 
-- The project uses **Poppins** from google fonts as the first choice, and sans-serif.
+- The project uses **Poppins** from Google fonts as the first choice, and Sans-serif.
 
 **Images**
 
@@ -184,7 +197,7 @@ App that holds the functionality of the managing the user’s authentication and
 
 - **Landing Page**
 
-    - Displayed as standard page for the application when the user is not registered or logged out.
+    - Displayed as a standard page for the application when the user is not registered or logged out.
 
 <br/>
 <details>
@@ -194,15 +207,15 @@ App that holds the functionality of the managing the user’s authentication and
 </details>
 <br/>
 
-- **Navigation Bar(Header)**
+- **Navigation Bar (Header)**
     
-    - Appears in every page of the application to facilitate the user navigation thru the website
+    - Appears in every page of the application to support user’s navigation through the website.
     - A Home link that brings directly to the main page of the user
     - Login link to a login form 
     - Register link to a registration form for new users
     - The name “Flamingo” is also a link that redirect to main page
-    - When the user is logged in a word “Welcome” and the username is displayed
-    - Also, when the user is logged in, the “Logout” appears that will logout the user and redirect to the landing page
+    - When the user is logged in, the word “Welcome” and the username is displayed
+    - When the user is logged in, the “Logout” appears which will logout the user and redirect them to the landing page
 
 <br/>
 <details>
@@ -226,23 +239,23 @@ App that holds the functionality of the managing the user’s authentication and
 
 ## Dynamic Features
 
-This section is designed to contain all the main information and tools of the application, the components inside will dynamically change as the user navigate on the website.
+This section is designed to contain all of the main information and tools of the application. The components inside will dynamically change as the user navigates on the website.
 
 ### Admin Features
 
 #### Main Page
 
 - **Menu Buttons**
-    - Create a Gig link to the page with a form for the creation of a new gig
-    - Create a venue link to the page with a form to the creation of a new venue
-    - My DJs, a link for a page with information of all the registered DJs
-    - Past gigs, a link for a page with information of all the gigs that the date is already past
+    - Create a Gig links to the page with a form for the creation of a new gig
+    - Create a venue links to the page with a form to the creation of a new venue
+    - My DJ's is a link for a page with information about all of the registered DJ's
+    - Past gigs is a link for a page with information about all of the previous gigs
 
 - **Filter Bar**
-    - A section with filter that can be applied to the table, the gigs can be filtered by the DJ, venue and in a period of time
+    - A section with filters that can be applied to the table, the gigs can be filtered by a DJ, venue and chronologically.
     
 - **Table of Gigs**
-    - Table where is displayed all the programmed gigs, with some basic information and a button to bring to a more detailed vision of the gig.
+    - A table where all of the programmed gigs are displayed, in addition to some basic information and a button to bring to a more detailed vision of the gig.
 
 <br/>
 <details>
@@ -254,7 +267,7 @@ This section is designed to contain all the main information and tools of the ap
 
 #### Create Gig
 
-- Is the page that contains the form to create a gig. The form has a few placeholders to make it easy to understand the fields and also some fields with specific datatypes are arranged to facilitate the usage. By the end of the form a button “Create” will validate the gig and redirect the user to the main page. Due to the database design each gig has to have a name and unique, only the field “info” can be set as empty. Any problems with the validation the website will display an error message and redirect to the form keeping the previous entered data to correction
+- Is the page that contains the form to create a gig. The form has a few placeholders to navigate fields easily, additionally some fields with specific data types are arranged to facilitate the usage. At the end of the form, the button “Create” will validate the gig and redirect the user to the main page. Due to the database design, each gig has to have an unique name, only the field “info” can be set as empty. If there are any problems with the validation, the website will display an error message and redirect to the form, while keeping the previously typed data to make the correction easier.
 
 <br/>
 <details>
@@ -266,7 +279,7 @@ This section is designed to contain all the main information and tools of the ap
 
 #### Create Venue
 
-- Display a page with a form to the creation of a new venue. All the fields are string and the only ones that can be let blank are the “website” and “info”.
+- Display a page with a form to create a new venue. All of the fields are a string and the only ones that can be blank are the “website” and “info”.
 
 <br/>
 <details>
@@ -278,7 +291,7 @@ This section is designed to contain all the main information and tools of the ap
 
 #### My Djs
 
-- Display a table with information about each user/DJ that is registered on the application. A button “View Details” is displayed in each row of the table that brings the user to a more completed view of a specific DJ
+- Display a table with information about each user/DJ who is registered in the application. A button “View Details” is displayed in each row of the table to bring the user to a more informative view of a specific DJ.
 
 <br/>
 <details>
@@ -288,13 +301,13 @@ This section is designed to contain all the main information and tools of the ap
 </details>
 <br/>
 
-#### Mange DJ Account
+#### Manage DJ Account
 
-- Page that displays information about a specific user, and with a button “Delete User” that will trigger a modal window asking if the user is sure about deleting action
+- A page that displays information about a specific user with a button “Delete User”. The button triggers a modal window asking if the user is sure about the action to delete.
 
 #### Gigs History
 
-- At this page a table is displayed where each row holds information about the gig that was already taken place.
+- At this page, a table is displayed where each row holds information about the gig that already took place.
 
 <br/>
 <details>
@@ -306,7 +319,7 @@ This section is designed to contain all the main information and tools of the ap
 
 #### Gig Details
 
-- This page display more completed information about a selected gig. The page uses the same template as the DJ view but in the case of the admin there is a button “Edit Gig” where direct the user to a form to edit that gig.
+- TThis page displays more extensive information about a selected gig. This page uses the same template as the DJ view, only in the case of the admin, there is a button “Edit Gig”, directing the user to a form to edit the gig.
 
 <br/>
 <details>
@@ -318,21 +331,20 @@ This section is designed to contain all the main information and tools of the ap
 
 #### Update Gig
 
-- This page uses a similar template to the creation of the gig but loads the information of the gig to be edited, after the alteration the user may click on the Update button to post the changes to the database. On the top there is a “Delete” button that will trigger a modal that alert the user that the gig will be deleted from the database.
+- This page uses a similar template to the page where the gig is created. However, in addition it  loads the information of the gig, allowing it to be edited. After the alteration has been made, the user may click on the ‘’Update'' button to post the adjustments to the database. On the top, there is a “Delete” button which will trigger a modal to alert the user that the gig will be deleted from the database.
 
-### User/Dj Featrues
+### User as Dj Features
 
-The main page for the DJ user is a agenda like view where the gigs are displayed on cards, ordered by date and holding a few crucial information and actions for that gig.
+The main page for the DJ user is an agenda: view where the gigs are displayed on cards, ordered by date and holding some essential information and actions for that gig.
 
 #### My gigs agenda
 
-- My gigs agenda
-Main page for the DJ user, if the user logged in has gigs assigned to happened, they will be displayed in cards with different colours depending on the status of the gig (Confirmed, Proposal or Cancelled). Each card holds a button “Details” that will redirect the user to a page with more information and other actions related to the gig. At the top a button “History” will display the history of gigs of the user.
+- This is the main page for the DJ user. If the user logged in and has assigned gigs up to come, they will be displayed in cards with different colours depending on the status of the gig (Confirmed, Proposal or Cancelled). Each card holds a button “Details” which will redirect the user to a page with some more information and the possibility of other actions related to the gig. At the top, the button “History” will display the history of the user's gigs.
 
 
 #### Gigs Cards
 
-- The colour of each card represents their status, being green for confirmed, that means that the admin created already like that or was already accepted by the DJ, light blue is for a proposal, where the admin is proposing a gig for that DJ that can be accepted or declined, red is displayed on the cancelled gig, that was for some reason cancelled by the admin only. Rejected gigs are not displayed for the DJ user.
+- The colour of each of the cards represents their status: green for confirmed, meaning that the admin created an already confirmed gig or that it was accepted by the DJ. Light blue is for a proposal, where the admin is proposing a gig for the DJ which can be accepted or declined. Lastly, red is displayed on a cancelled gig, which for some reason got cancelled by the admin. Gigs rejected by the DJ are not displayed for the DJ user.
 
 <br/>
 <details>
@@ -344,7 +356,7 @@ Main page for the DJ user, if the user logged in has gigs assigned to happened, 
 
 #### My gigs history
 
-- This page displays a table with the gigs that the date is already in the past. This page is only for a quick view on the gigs history and is paginated for better user experience.
+- This page displays a table with the gigs, date of which is already in the past. This page is only for a quick look at the gigs history and is paginated for a better user experience.
 
 
 <br/>
@@ -357,13 +369,13 @@ Main page for the DJ user, if the user logged in has gigs assigned to happened, 
 
 #### Gigs Details
 
-- This page displays the more completed information about a selected gig and the venue where is happening, also in the case of being a proposal the buttons “Accept” or “Reject” are displayed, so the DJ can let the admin know the user accepted the gig.
+- This page displays more information about a selected gig and the venue where it is happening. In the case of being a proposal, the buttons “Accept” or “Reject” are displayed, so the DJ can let the admin know whether the user accepted the gig.
 
-**place img here**
+![Gigs Details](/docs/images/flamingoGigsDetails.png)
 
 # Testing
 
-- Two approaches were taking during the test routines, one is a manual testing with the direct use of the features and expecting right outcomes, other was made using **unittest** package and **coverage**.
+- Two approaches were taken during the test routines, one is of a manual testing with the direct use of the features and predicting the correct outcomes, while the other routine was made using **unittest** package and **coverage**.
 
 ## Manual Test Routine
 
@@ -404,33 +416,34 @@ Main page for the DJ user, if the user logged in has gigs assigned to happened, 
 
 # Bugs
 
-At the moment the application no major bug is known or still not fixed.
+At the moment, no major bug is known or is still not fixed in the application.
 
 ## Fixed Detected Bugs
 
-### Admin can delete other admins accounts.
+### Admin can delete other admin accounts
 
-- A possible dangerous bug was undetected, an admin could delete its own account leading to a very unexpected behaviour of the application. After identifying the possible bug, changes on the logic were made to fix this behaviour.
+- A possible dangerous bug was detected: an admin could delete its own account, leading to a very unexpected behaviour of the application. After identifying the possible bug, changes in the logic were made to fix this behaviour.
 
-### Forms not authenticating.
+### Forms not authenticating
 
-- During the development a major bug occurred where the forms where not able to authenticate it user input. After some research and googling was noticed that the line “{csrf_token}”. After adding the command, the bug was fixed.
+- A major bug occurred during the development, where the forms were not able to authenticate users input. After some research and googling, the line “{csrf_token}” was noticed. After adding the command, the bug was fixed.
 
 ### No protected endpoint
 
-- A security branch was detected when any person could just paste the endpoints of the url and would access admin or any user features without authentication. The problem was addressed and all the endpoints for user accounts and admin are protected.
+- A security breach was detected because any person could just paste the endpoints of the url and could access admin or any user features without authentication. The problem was addressed and all the endpoints for user accounts and admin are protected.
 
 ### Styling bugs
 
-- Due to a change in the font family during the development, some html elements needed to update and change the style, in order to keep the layout of the application
+- DDue to a change in the font family during the development, some html elements needed to change the style class, in order to keep the layout of the application.
 
 ## Detected and not fixed bugs
 
-Some minors styling bugs were detected however their occurrence does not interfere with the user experience
+Some minor styling bugs were detected, however their occurrence does not interfere with the user experience.
 
-### Admin list of gigs styling bug
+### AAdmin list of gigs styling bug
 
-- At the main page of the admin user on the table that display all the gigs some of the list items have the border a little bit thicker than the others, making a slightly difference between rolls on the table.
+- AAt the main page of the admin user, on the table which displays all of the gigs, some of the list items have a border that’s a little bit thicker than the others, making a slight difference between rolls on the table.
+
 
 # Deployment
 
