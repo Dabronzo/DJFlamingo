@@ -2,11 +2,44 @@
 
 Flamingo manager is a web application that was developed to be an useful tool for small artists and producers of the night life business. Currently, the application is set to handle a single agency/producer and its artists, with a possible extension in the future. There are two types of users: one is the admin (the super-user), who is the agency producer, responsible for arranging the events and picking one of the Dj's using the application. Additionally, admin can set the event to be confirmed or as a proposal, waiting for the designated Dj’s confirmation. The other type of user is the DJ, who can access the information about all of their events in addition to accepting and refusing the gigs. The events are displayed on the DJ main page chronologically.
 
-
+## Link to the live application [**Flamingo Gig Manager**](https://flamingodj.herokuapp.com/)
 
 # Table of Content
 
-1.[]
+1 [**Technology Used**](#technology-used)
+
+2 [**Usage**](#usage)
+
+3 [**UX**](#ux)
+   * 3.1 [**User Stories**](#user-stories)
+   * 3.2 [**User DJ Stories**](#user-dj-stories)
+
+4 [**Development Planes**](#development-planes)
+   * 4.1 [**Strategy**](#strategy)
+   * 4.2 [**Scope**](#scope)
+   * 4.3 [**Skeleton**](#skeleton)
+   * 4.4 [**Structure**](#structure)
+   * 4.5 [**Surface**](#surface)
+
+5 [**Features**](#features)
+   * 5.1 [**Fixed Features**](#fixed-features)
+   * 5.2 [**Dynamic Features**](#dynamic-features)
+       * 5.3 [**Admin Features**](#admin-features)
+       * 5.4 [**User as Dj Features**](#user-as-dj-features)
+
+6 [**Testing**](#testing)
+  * 6.1 [**Manual Test Routine**](#manual-test-routine)
+  * 6.2 [**Unittest Coverage**](#unittest-coverage)
+
+7 [**Bugs**](#bugs)
+  *  7.1 [**Fixed Detected Bugs**](#fixed-detected-bugs)
+  *  7.2 [**Detected and not fixed bugs**](#detected-and-not-fixed-bugs)
+
+6 [**Deployment**](#deployment)
+
+7 [**Out of Scope User Stories**](#out-of-scope-user-stories)
+
+8 [**Credits**](#credits)
 
 # Technology Used
 ### Languages
@@ -52,7 +85,7 @@ To update or delete a gig the admin can access the button “view details” at 
 
 As a DJ the user can login with the email and password to go to the main page. There is displayed the in a form of cards the user’s gigs. Above the gigs cards the are a menu button that brings to the history of gigs made by the user DJ.  The gig cards hold some basic information about the gig and a button access the details view. At the details view the DJ have more information about the event and the venue. In the case of the gig being a proposal made by the admin the user can accept or refuse it by pressing buttons at the bottom of the view.
 
-
+[**Back to Top**](#table-of-content)
 
 # UX
 
@@ -82,6 +115,8 @@ As a DJ the user can login with the email and password to go to the main page. T
 - As a **DJ/user** I can **expect that the fees are calculated** to know exactly how much I **should receive**
 - As a **DJ/user** I can **get a specific view if I don't have any gigs assigned** to know about my current gigs situation
 - As a **user** I can **registrate or login** to view **my page of gigs**
+
+[**Back to Top**](#table-of-content)
 
 # Development Planes
 
@@ -190,6 +225,8 @@ App that holds the functionality of the user’s authentication and registration
 - The flamingo on the logo was taken from: [freepng](https://www.freepng.es/)
 - The flamingo with sunglasses was taken from: [dreamstime](https://www.dreamstime.com)
 - The landing picture was taken from: [Pexels](https://www.pexels.com/)
+
+[**Back to Top**](#table-of-content)
 
 # Features
 
@@ -373,6 +410,8 @@ The main page for the DJ user is an agenda: view where the gigs are displayed on
 
 ![Gigs Details](/docs/images/flamingoGigsDetails.png)
 
+[**Back to Top**](#table-of-content)
+
 # Testing
 
 - Two approaches were taken during the test routines, one is of a manual testing with the direct use of the features and predicting the correct outcomes, while the other routine was made using **unittest** package and **coverage**.
@@ -444,6 +483,7 @@ Some minor styling bugs were detected, however their occurrence does not interfe
 
 - AAt the main page of the admin user, on the table which displays all of the gigs, some of the list items have a border that’s a little bit thicker than the others, making a slight difference between rolls on the table.
 
+[**Back to Top**](#table-of-content)
 
 # Deployment
 
@@ -476,5 +516,17 @@ The site is hosted using Heroku, deployed directly from the master branch of Git
 - Locate the fork option in the top-right hand corner of the repository page.
 - You will be asked where you want to fork it to.
 
-## Credits
+# Out of Scope User Stories
 
+A feature that would allow the user to have a financial view of the gigs performed was brought to the backlog. However, to keep the application simple so would fit for a MVP, the issue was taken out of the scope. The feature could be implemented in future versions of the app.
+
+
+# Credits
+
+- A special thank you for the tutors from code institute for the good support when I needed.
+
+- To my mentor Brian O’Hare for the good advises and guidance.
+
+- To the slack community, and specially for those who are there answering questions and helping each other.
+
+[**Back to Top**](#table-of-content)
